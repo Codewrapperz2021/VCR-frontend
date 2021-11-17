@@ -1,5 +1,5 @@
 import axios from 'axios';
-const FACULTYSERVICES_BASE_URL='http://localhost:8000/api/';
+const FACULTYSERVICES_BASE_URL='http://localhost:8000/api/faculty/';
 
 class facultyservices{
     viewfaculty()
@@ -17,9 +17,9 @@ class facultyservices{
         return axios.delete(FACULTYSERVICES_BASE_URL+faculty_id);
     }
 
-    addfaculty()
+    addfaculty(faculty)
     {
-        return axios.post(FACULTYSERVICES_BASE_URL);
+        return axios.post(FACULTYSERVICES_BASE_URL,faculty);
     }
 }
 
