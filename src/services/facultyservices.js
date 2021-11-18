@@ -6,10 +6,15 @@ class facultyservices{
     {
         return axios.get(FACULTYSERVICES_BASE_URL);
     }
+    facultyById(id){
+        {
+            return axios.get(FACULTYSERVICES_BASE_URL+id);
+        }
+    }
 
-    updatefaculty(faculty_id)
+    updatefaculty(id,faculty)
     {
-        return axios.put(FACULTYSERVICES_BASE_URL+faculty_id);
+        return axios.put(FACULTYSERVICES_BASE_URL+id,faculty);
     }
 
     deletefaculty(faculty_id)
