@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import Deletefaculty from './deletefaculty';
 import Updatefaculty from './updatefaculty';
+import {withRouter} from 'react-router'
 import facultyservices from '../../services/facultyservices';
 export default class Viewfaculty extends React.Component
 {
@@ -14,8 +15,7 @@ export default class Viewfaculty extends React.Component
         
         super();
        
-        
-    }
+        }
   
 
     componentDidMount() {
@@ -56,8 +56,8 @@ export default class Viewfaculty extends React.Component
                 <td> {person.email}</td>
                 <td>{person.phone}</td>
                 <td>{person.dob}</td>
-                <td><Deletefaculty id={person.id} /></td>
-                <td><Updatefaculty id={person.id}  /></td>
+                <div><td><Deletefaculty id={person.id}/> &nbsp;
+                <input className="btn btn-primary"type="button" id={person} value="Edit"onClick={(e)=>window.location.replace('/updateFaculty/'+person.id)} /></td></div>
               </tr>)
                }
              </tbody>
@@ -73,4 +73,4 @@ export default class Viewfaculty extends React.Component
     }
     
 }
-
+//export default withRouter(Viewfaculty);

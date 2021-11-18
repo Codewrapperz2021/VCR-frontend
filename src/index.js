@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Saransh from './Saransh';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import Addfaculty from './component/faculty/addfaculty';
-import Viewfaculty from './component/faculty/viewfaculty';
 
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <Saransh/>,
-    /* </React.StrictMode>, */
+
+    <App/>,
   document.getElementById('root')
 );
 
