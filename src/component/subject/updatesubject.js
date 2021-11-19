@@ -54,8 +54,20 @@ export default class Updatesubject extends React.Component {
       const person=this.state;
     return (
     <>
-      
-          <label>
+          <div className="container pt-5 d-flex justify-content-center" >
+          <div className="col-md-6 shadow p-4">
+            <h3 className="text-center">Update Student</h3>
+
+            <hr />
+            <label for=""><b>Subject Name</b></label>
+            <input type="text" name='sname' defaultValue={person.sname} onChange={this.handlesname} />
+            <label for=""><b>Subject Code</b></label>
+            <input type="text" name='subject_code' value={person.subject_code} onChange={this.handlesubject_code} />
+            <input id="button" type="submit" class="registerbtn" value="Update" onClick={()=>this.handlesubmit()}></input>
+
+          </div>
+        </div>
+          {/* <label>
             Student Name:
             <input type="text" name='sname' defaultValue={person.sname} onChange={this.handlesname} />
           </label>
@@ -64,7 +76,7 @@ export default class Updatesubject extends React.Component {
             <input type="text" name='subject_code' value={person.subject_code} onChange={this.handlesubject_code} />
           </label>
           
-          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button>
+          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button> */}
     </>
     );
   }

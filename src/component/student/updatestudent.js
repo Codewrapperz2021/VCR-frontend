@@ -77,8 +77,27 @@ export default class Updatestudent extends React.Component {
       const person=this.state;
     return (
     <>
+          <div className="container pt-5 d-flex justify-content-center" >
+          <div className="col-md-6 shadow p-4">
+            <h3 className="text-center">Update Student</h3>
+
+            <hr />
+            <label for=""><b>First Name</b></label>
+            <input type="text" name='first_name' defaultValue={person.first_name} onChange={this.handlefname} />
+            <label for=""><b>Last Name</b></label>
+            <input type="text" name='last_name' value={person.last_name} onChange={this.handlelname} />
+            <label for=""><b>Date Of Birth</b></label>
+            <input type="text" name='address' value={person.address} onChange={this.handleaddress}/>
+            <label for=""><b>Email</b></label>
+            <input type="text" name='email' value={person.email} onChange={this.handleemail} />
+            <label for=""><b>Phone</b></label>
+            <input type="text" name='phone' value={person.phone} onChange={this.handlephone} />
+            <input id="button" type="submit" class="registerbtn" value="Update" onClick={() => this.handlesubmit()}></input>
+
+          </div>
+        </div>
       
-          <label>
+          {/* <label>
             First Name:
             <input type="text" name='first_name' defaultValue={person.first_name} onChange={this.handlefname} />
           </label>
@@ -98,7 +117,7 @@ export default class Updatestudent extends React.Component {
            dob:
             <input type="text" name='address' value={person.address} onChange={this.handleaddress}/>
           </label>
-          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button>
+          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button> */}
     </>
     );
   }

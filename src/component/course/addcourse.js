@@ -23,9 +23,20 @@ render()
     const data={cname:this.state.cname}
     courseservices.addcourse(data)
 }}>              
-            <input id="cname" type="text"  placeholder="Enter your first name"   onChange={(event)=>{this.setState({cname:event.target.value})}}/>
+            <div className="container pt-5 d-flex justify-content-center" >
+             <div className="col-md-6 shadow p-4">
+             <h3 className="text-center">Add Course</h3>
+              
+              <hr/>
+              <label for=""><b>Course Name</b></label>
+              <input id="cname" type="text"  placeholder="Enter your course name"   onChange={(event)=>{this.setState({cname:event.target.value})}}/>
+              
+              <input id="button"type="submit" class="registerbtn" value="Submit"></input>
+             </div>
+            </div>
+            {/* <input id="cname" type="text"  placeholder="Enter your first name"   onChange={(event)=>{this.setState({cname:event.target.value})}}/>
             
-            <input id="button"type="submit" value="button"></input>
+            <input id="button"type="submit" value="button"></input> */}
         </form>
     </body>
 </html> 

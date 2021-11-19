@@ -48,13 +48,23 @@ export default class Updatecourse extends React.Component {
       const person=this.state;
     return (
     <>
-      
-          <label>
+          <div className="container pt-5 d-flex justify-content-center" >
+          <div className="col-md-6 shadow p-4">
+            <h3 className="text-center">Update Course</h3>
+
+            <hr />
+            <label for=""><b>Course Name</b></label>
+            <input type="text" name='cname' defaultValue={person.cname} onChange={this.handlecname} />
+            <input id="button" type="submit" class="registerbtn" value="Update" onClick={()=>this.handlesubmit()}></input>
+
+          </div>
+        </div>
+          {/* <label>
             Course Name:
             <input type="text" name='cname' defaultValue={person.cname} onChange={this.handlecname} />
           </label>
           
-          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button>
+          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button> */}
     </>
     );
   }
