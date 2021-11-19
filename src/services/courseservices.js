@@ -1,5 +1,5 @@
 import axios from 'axios';
-const COURSESERVICES_BASE_URL='http://localhost:8000/api/';
+const COURSESERVICES_BASE_URL='http://localhost:8000/api/course/';
 
 class courseservices{
     viewcourse()
@@ -7,9 +7,14 @@ class courseservices{
         return axios.get(COURSESERVICES_BASE_URL);
     }
 
-    updatecourse(faculty_id)
+    courseById(id){
+        {
+            return axios.get(COURSESERVICES_BASE_URL+id);
+        }
+    }
+    updatecourse(id,course)
     {
-        return axios.put(COURSESERVICES_BASE_URL+course_id);
+        return axios.put(COURSESERVICES_BASE_URL+id,course);
     }
 
     deletecourse(course_id)
@@ -17,9 +22,9 @@ class courseservices{
         return axios.delete(COURSESERVICES_BASE_URL+course_id);
     }
 
-    addcourse()
+    addcourse(course)
     {
-        return axios.post(COURSESERVICES_BASE_URL);
+        return axios.post(COURSESERVICES_BASE_URL,course);
     }
 }
 

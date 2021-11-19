@@ -14,6 +14,10 @@ import Addsubject from './component/subject/addsubject';
 import Viewsubject from './component/subject/viewsubject';
 import Updatesubject from './component/subject/updatesubject';
 
+import Addcourse from './component/course/addcourse';
+import Viewcourse from './component/course/viewcourse';
+import Updatecourse from './component/course/updatecourse';
+
 
 export default class App extends Component {
     constructor(props)
@@ -36,6 +40,10 @@ export default class App extends Component {
                         <Route path="/viewsubject" element={<Viewsubject/>}/>
                         <Route path="/addsubject" element={<Addsubject/>}/>
                         <Route exact path={"updatesubject/:id"} element={ <Updatesubject />} />
+                          
+                        <Route path="/viewcourse" element={<Viewcourse/>}/>
+                        <Route path="/addcourse" element={<Addcourse/>}/>
+                        <Route exact path={"updatecourse/:id"} element={ <Updatecourse />} />  
  
                           
                      </Routes>
