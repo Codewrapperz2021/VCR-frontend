@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { render } from "react-dom";
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
+import Dashboard from './component/dashboard';
+
+
 import Addfaculty from './component/faculty/addfaculty';
 import Viewfaculty from './component/faculty/viewfaculty';
 import Updatefaculty from './component/faculty/updatefaculty';
@@ -19,6 +22,7 @@ import Viewcourse from './component/course/viewcourse';
 import Updatecourse from './component/course/updatecourse';
 
 
+
 export default class App extends Component {
     constructor(props)
     {
@@ -28,7 +32,10 @@ export default class App extends Component {
         return (
             <div>
                 <Router>
+                    
                      <Routes>
+                        
+                        <Route path="/" element={<Dashboard/>}/>
                         <Route path="/viewfaculty" element={<Viewfaculty/>}/>
                         <Route path="/addfaculty" element={<Addfaculty/>}/>
                         <Route exact path={"updatefaculty/:id"} element={ <Updatefaculty />} />
