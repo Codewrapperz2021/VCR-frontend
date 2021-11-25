@@ -1,84 +1,44 @@
-import React from 'react';
-import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom'
 import subjectservices from '../../services/subjectservices';
+import '../../form.css'
 
-export default class Updatesubject extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-    sname:'',
-    subject_code:'',
-  }
-  this.handlesname=this.handlesname.bind(this);
-  this.handlesubject_code=this.handlesubject_code.bind(this);
-
-
-
-
-
-  }
-  handlesname = e => {
-      
-      console.log(e.target.value)
-     
-      this.setState({sname:e.target.value})
-     
-  }
-  handlesubject_code = e => {
-      
-    console.log(e.target.value)
-   
-    this.setState({subject_code:e.target.value})
-  }
+export default function Updatesubject() {
+  const [sName, setsName] = useState('');
+  const [subjectCode, setsubjectCode] = useState('');
   
-  handlesubmit =() => {
-       const id = window.location.pathname.substring(15,25)
-    console.log(this.state);
-    var subject =this.state
-    subjectservices.updatesubject(id,subject)
+
+  function handlesubmit() {
+    let id = Number(window.location.pathname.substring(15, 25));
+    const data = { sname: sName, subject_code: subjectCode}
+    subjectservices.updatesubject(id, data)
+  }
+  useEffect(() => {
+    const id = window.location.pathname.substring(15,25)
+    subjectservices.subjectById(id)
       .then(res => {
-        console.log(res.data)
+        const persons = res.data;
+        setsName(persons.sname);
+        setsubjectCode(persons.subject_code)
       })
-      .catch(err=>console.log(err))
-    // this.props.onUpdate();
-  }
+     
+  },[])
 
-  componentDidMount(){
-   const id = window.location.pathname.substring(15,25)
-   subjectservices.subjectById(id)
-   .then(res =>   this.setState({id:id,sname:res.data.sname,subject_code:res.data.subject_code}))
-
-  }
-  render() {
-      const person=this.state;
-    return (
-    <>
-          <div className="container pt-5 d-flex justify-content-center" >
+  return (<div>
+    
+    <form>
+        <div className="container pt-5 d-flex justify-content-center" >
           <div className="col-md-6 shadow p-4">
-            <h3 className="text-center">Update Student</h3>
-
+            <h3 className="text-center">Update Subject</h3>
             <hr />
             <label for=""><b>Subject Name</b></label>
-            <input type="text" name='sname' defaultValue={person.sname} onChange={this.handlesname} />
-            <label for=""><b>Subject Code</b></label>
-            <input type="text" name='subject_code' value={person.subject_code} onChange={this.handlesubject_code} />
-            <input id="button" type="submit" class="registerbtn" value="Update" onClick={()=>this.handlesubmit()}></input>
-
+            <input type="text" name='sname' defaultValue={sName} onChange={(e) => setsName(e.target.value)} />
+             <label for=""><b>Subject Code</b></label>
+             <input type="text" name='subject_code' value={subjectCode} onChange={(e) => setsubjectCode(e.target.value)} />
+            
+            <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
           </div>
         </div>
-          {/* <label>
-            Student Name:
-            <input type="text" name='sname' defaultValue={person.sname} onChange={this.handlesname} />
-          </label>
-          <label>
-            Last Name:
-            <input type="text" name='subject_code' value={person.subject_code} onChange={this.handlesubject_code} />
-          </label>
-          
-          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button> */}
-    </>
-    );
-  }
+    </form>
+  </div>)
 }
-// export default  withRouter(Updatefaculty);

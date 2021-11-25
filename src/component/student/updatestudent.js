@@ -1,125 +1,54 @@
-import React from 'react';
-import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom'
 import studentservices from '../../services/studentservices';
+import '../../form.css'
 
-export default class Updatestudent extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-    first_name:'',
-    last_name:'',
-    address:'',
-    email:'',
-    phone:'',
-  }
-  this.handlefname=this.handlefname.bind(this);
-  this.handlelname=this.handlelname.bind(this);
-  this.handleaddress=this.handleaddress.bind(this);
-  this.handleemail=this.handleemail.bind(this);
-  this.handlephone=this.handlephone.bind(this);
-  this.handlesubmit=this.handlesubmit.bind(this);
+export default function Updatestudent() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
 
-
-
-
+  function handlesubmit() {
+    let id = Number(window.location.pathname.substring(15, 25));
+    const data = { first_name: firstName, last_name: lastName, email: email, phone: phone, address: address }
+    studentservices.updatestudent(id, data)
   }
-    handlefname = e => {
-      
-      console.log(e.target.value)
-     
-      this.setState({first_name:e.target.value})
-     
-  }
-  handlelname = e => {
-      
-    console.log(e.target.value)
-   
-    this.setState({last_name:e.target.value})
-  }
-  handleaddress = e => {
-      
-    console.log(e.target.value)
-   
-    this.setState({address:e.target.value})
-  }
-  handleemail = e => {
-      
-    console.log(e.target.value)
-   
-    this.setState({email:e.target.value})
-  }
-  handlephone = e => {
-      
-    console.log(e.target.value)
-   
-    this.setState({phone:e.target.value})
-  }
-  handlesubmit =() => {
-       const id = window.location.pathname.substring(15,25)
-    console.log(this.state);
-    var student =this.state
-    studentservices.updatestudent(id,student)
+  useEffect(() => {
+    const id = window.location.pathname.substring(15,25)
+    studentservices.studentById(id)
       .then(res => {
-        console.log(res.data)
+        const persons = res.data;
+        setFirstName(persons.first_name);
+        setLastName(persons.last_name)
+        setAddress(persons.address)
+        setEmail(persons.email)
+        setPhone(persons.phone)
       })
-      .catch(err=>console.log(err))
-    // this.props.onUpdate();
-  }
+     
+  },[])
 
-  componentDidMount(){
-   const id = window.location.pathname.substring(15,25)
-   studentservices.studentById(id)
-   .then(res =>   this.setState({id:id,first_name:res.data.first_name,last_name:res.data.last_name,address:res.data.address,phone:res.data.phone,email:res.data.email}))
-
-  }
-  render() {
-      const person=this.state;
-    return (
-    <>
-          <div className="container pt-5 d-flex justify-content-center" >
+  return (<div>
+    
+    <form>
+        <div className="container pt-5 d-flex justify-content-center" >
           <div className="col-md-6 shadow p-4">
             <h3 className="text-center">Update Student</h3>
-
             <hr />
             <label for=""><b>First Name</b></label>
-            <input type="text" name='first_name' defaultValue={person.first_name} onChange={this.handlefname} />
+            <input id="fname" type="text" placeholder="Enter your first name" defaultValue={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <label for=""><b>Last Name</b></label>
-            <input type="text" name='last_name' value={person.last_name} onChange={this.handlelname} />
+            <input id="lname" type="text" placeholder="Enter your last name" defaultValue={lastName} onChange={(e) => setLastName(e.target.value)} />
             <label for=""><b>Date Of Birth</b></label>
-            <input type="text" name='address' value={person.address} onChange={this.handleaddress}/>
+            <input id="address" type="text" placeholder="enter address" defaultValue={address} onChange={(e) => setAddress(e.target.value)} />
             <label for=""><b>Email</b></label>
-            <input type="text" name='email' value={person.email} onChange={this.handleemail} />
+            <input id="email" type="email" placeholder="name@example.com" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
             <label for=""><b>Phone</b></label>
-            <input type="text" name='phone' value={person.phone} onChange={this.handlephone} />
-            <input id="button" type="submit" class="registerbtn" value="Update" onClick={() => this.handlesubmit()}></input>
-
+            <input id="phone" type="text" placeholder="Enter your phone number" defaultValue={phone} onChange={(e) => setPhone(e.target.value)} />
+            <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
           </div>
         </div>
-      
-          {/* <label>
-            First Name:
-            <input type="text" name='first_name' defaultValue={person.first_name} onChange={this.handlefname} />
-          </label>
-          <label>
-            Last Name:
-            <input type="text" name='last_name' value={person.last_name} onChange={this.handlelname} />
-          </label>
-          <label>
-            Email:
-            <input type="text" name='email' value={person.email} onChange={this.handleemail} />
-          </label>
-          <label>
-            phone:
-            <input type="text" name='phone' value={person.phone} onChange={this.handlephone} />
-          </label>
-          <label>
-           dob:
-            <input type="text" name='address' value={person.address} onChange={this.handleaddress}/>
-          </label>
-          <button className="btn btn-primary" onClick={()=>this.handlesubmit()}>Update</button> */}
-    </>
-    );
-  }
+    </form>
+  </div>)
 }
-// export default  withRouter(Updatefaculty);

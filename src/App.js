@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from "react-dom";
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-
 import Dashboard from './component/dashboard';
 
 
@@ -56,11 +55,7 @@ export default class App extends Component {
                      </Routes>
 
                 </Router>
-                 {/* <BrowserRouter> */}
-{/* 
-<Route path='/' component={Viewfaculty}/>
-<Route path='/saransh' component={Viewfaculty}/> */}
-{/* </BrowserRouter> */}
+            
             </div>
         )
     }

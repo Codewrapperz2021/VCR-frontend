@@ -1,26 +1,22 @@
-import React from 'react';
-import axios from 'axios';
+import React,{ useState} from 'react';
 import facultyservices from '../../services/facultyservices';
 
 
-export default class Deletefaculty extends React.Component {
-  state = {
-    id: '',
-  }
+export default function Deletefaculty(props)  {
+  const [id] = useState('');
 
-  handleDelete =() => {
-      var id=this.props.id
+
+ const handleDelete =() => {
+      var id=props.id
         facultyservices.deletefaculty(id)
         .then(res => {
       })
-      console.log(this.props.id)
-  }
-
-  render() {
+      console.log(props.id)
+  }  
     return (
     <>
-          <button className="btn btn-danger" onClick={()=>this.handleDelete()}>Delete</button>
+          <button className="btn btn-danger" onClick={()=>handleDelete()}>Delete</button>
     </>
     );
   }
-}
+
