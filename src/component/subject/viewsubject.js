@@ -13,11 +13,7 @@ export default function Viewsubject() {
         setSubjects(subject);
       })
   },[])
-
-
   return (
-
-
     <table class="table table-bordered">
       <thead>
         <tr class="table-info">

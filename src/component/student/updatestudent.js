@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom'
 import studentservices from '../../services/studentservices';
 import '../../form.css'
+import { useParams } from 'react-router';
 
 export default function Updatestudent() {
+  const {id} = useParams();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,12 +12,10 @@ export default function Updatestudent() {
   const [address, setAddress] = useState('');
 
   function handlesubmit() {
-    let id = Number(window.location.pathname.substring(15, 25));
     const data = { first_name: firstName, last_name: lastName, email: email, phone: phone, address: address }
     studentservices.updatestudent(id, data)
   }
   useEffect(() => {
-    const id = window.location.pathname.substring(15,25)
     studentservices.studentById(id)
       .then(res => {
         const persons = res.data;

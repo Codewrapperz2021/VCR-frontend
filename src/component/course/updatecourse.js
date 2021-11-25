@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom'
 import courseservices from '../../services/courseservices';
-import '../../form.css'
+import '../../form.css';
+import { useParams } from 'react-router';
 
 export default function Updatecourse() {
+  const {id} = useParams();
   const [sname, setcName] = useState('');
  
   
 
   function handlesubmit() {
-    let id = Number(window.location.pathname.substring(14, 25));
     const data = { cname:sname}
     courseservices.updatecourse(id, data)
   }
   useEffect(() => {
-    const id = window.location.pathname.substring(14,25)
     courseservices.courseById(id)
       .then(res => {
         const persons = res.data;

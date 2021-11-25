@@ -42,7 +42,6 @@ export default function Viewstudent() {
           <td>{person.phone}</td>
           <td>{person.address}</td>
           <div><td><Deletestudent id={person.id} /> &nbsp;
-            {/* <input className="btn btn-primary" type="button" id={person} value="Edit" onClick={(e) => window.location.replace('/updateFaculty/' + person.id)} /></td></div> */}
           <Link to= {"/updatestudent/"+person.id}>
               <button class="btn btn-primary">Edit</button>      
           </Link></td></div>

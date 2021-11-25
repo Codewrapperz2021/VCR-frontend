@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import courseservices from '../../services/courseservices';
 import React, { useState } from 'react';
 import '../../form.css'
@@ -20,7 +19,6 @@ export default function Addcourse() {
                         <hr />
                         <label for=""><b>Cource Name</b></label>
                         <input id="cname" type="text" placeholder="Enter the cource name" onChange={(e) => setCName(e.target.value)} />
-
                         <button id="button" class="registerbtn" >Submit</button>
                     </div>
                 </div>

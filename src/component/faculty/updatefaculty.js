@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom'
 import facultyservices from '../../services/facultyservices';
 import '../../form.css'
-
+import { useParams } from 'react-router';
 
 export default function Updatefaculty() {
+  const {id} = useParams();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,13 +12,10 @@ export default function Updatefaculty() {
   const [dob, setDob] = useState('');
 
   function handlesubmit() {
-   
-    let id = Number(window.location.pathname.substring(15, 25));
     const data = { first_name: firstName, last_name: lastName, email: email, phone: phone, dob: dob }
-    facultyservices.updatefaculty({id}, data)
+    facultyservices.updatefaculty(id, data)
   }
   useEffect(() => {
-    const id = window.location.pathname.substring(15,25)
     facultyservices.facultyById(id)
       .then(res => {
         const persons = res.data;
@@ -38,7 +35,7 @@ export default function Updatefaculty() {
             <h3 className="text-center">Update Faculty</h3>
             <hr />
             <label for=""><b>First Name</b></label>
-            <input id="fname" type="text" placeholder="Enter your first name" defaultValue={firstName} />
+            <input id="fname" type="text" placeholder="Enter your first name" defaultValue={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <label for=""><b>Last Name</b></label>
             <input id="lname" type="text" placeholder="Enter your last name" defaultValue={lastName} onChange={(e) => setLastName(e.target.value)} />
             <label for=""><b>Date Of Birth</b></label>

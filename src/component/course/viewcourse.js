@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Deletecourse from './deletecourse';
-import Updatecourse from './updatecourse';
 import courseservices from '../../services/courseservices';
 import { Link } from 'react-router-dom';
 

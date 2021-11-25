@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom'
 import subjectservices from '../../services/subjectservices';
-import '../../form.css'
+import '../../form.css';
+import { useParams } from 'react-router';
 
 export default function Updatesubject() {
+  const {id} = useParams();
   const [sName, setsName] = useState('');
   const [subjectCode, setsubjectCode] = useState('');
   
 
   function handlesubmit() {
-    let id = Number(window.location.pathname.substring(15, 25));
     const data = { sname: sName, subject_code: subjectCode}
     subjectservices.updatesubject(id, data)
   }
   useEffect(() => {
-    const id = window.location.pathname.substring(15,25)
     subjectservices.subjectById(id)
       .then(res => {
         const persons = res.data;
