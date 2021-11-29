@@ -1,6 +1,6 @@
 import React,{ useState} from 'react';
 import studentservices from '../../services/studentservices';
-
+import swal from 'sweetalert';
 
 export default function Deletestudent(props)  {
   const [id] = useState('');
@@ -10,6 +10,10 @@ export default function Deletestudent(props)  {
       var id=props.id
       studentservices.deletestudent(id)
         .then(res => {
+          swal("deleted","data deleted successfully","success" ,{
+            buttons: false,
+            timer: 2000,
+          });
       })
       console.log(props.id)
   }  

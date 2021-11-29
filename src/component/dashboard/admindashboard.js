@@ -1,11 +1,11 @@
 import React from 'react';
-import '../App.css';
-import './script';
+import '../../App.css';
+import '../script';
 import { Link, NavLink } from 'react-router-dom';
 
 
 
-const Dashboard = () => {
+const AdminDashboard = () => {
     return (
         <html lang="en">
             <head>
@@ -14,7 +14,7 @@ const Dashboard = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
-                <title>Dashboard</title>
+                <title>Admin Dashboard</title>
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
                                 
                 
@@ -39,7 +39,7 @@ const Dashboard = () => {
                     <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                    <li><a className="dropdown-item" href="#!">Logout</a></li>
+                    <li><a className="dropdown-item" href="/login">Logout</a></li>
                     </ul>
                     </li>
                     </ul>
@@ -50,20 +50,20 @@ const Dashboard = () => {
                             <div className="sb-sidenav-menu">
                                 <div className="nav">
                                     <div className="sb-sidenav-menu-heading">Core</div>
-                                    <Link className="nav-link" to="/">
+                                    <Link className="nav-link" to="/admindashboard">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-tachometer-alt navbar-logo"></i></div>
-                                        <h6 className="pt-2 " style={{color: "white"}}>Dashboard</h6>
+                                        <h6 className="pt-2 " style={{color: "white"}}>Admin Dashboard</h6>
                                     </Link>
                                     <div className="sb-sidenav-menu-heading">Interface</div>
                                     <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon"><i className="fas fa-columns navbar-logo"></i></div>
-                                        <h6 className="pt-2 " style={{color: "white"}}>Faculties</h6>
+                                        <h6 className="pt-2 " style={{color: "white"}}>Teachers</h6>
                                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down navbar-logo"></i></div>
                                     </a>
                                     <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <Link className="nav-link" to="/viewfaculty">Show Faculties data</Link>
-                                            <Link className="nav-link" to="/addfaculty">Add Faculty</Link>
+                                            <Link className="nav-link" to="/viewfaculty">Show Teachers data</Link>
+                                            <Link className="nav-link" to="/addfaculty">Add Teacher</Link>
                                         </nav>
                                     </div>
                                     <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayout1" aria-expanded="false" aria-controls="collapseLayouts">
@@ -99,6 +99,17 @@ const Dashboard = () => {
                                             <Link className="nav-link" to="/addsubject">Add Subject</Link>
                                         </nav>
                                     </div>
+                                    <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutstt" aria-expanded="false" aria-controls="collapseLayouts">
+                                        <div className="sb-nav-link-icon"><i className="fas fa-columns navbar-logo"></i></div>
+                                        <h6 className="pt-2 " style={{color: "white"}}>Time Table</h6>
+                                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down navbar-logo"></i></div>
+                                    </a>
+                                    <div className="collapse" id="collapseLayoutstt" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                        <nav className="sb-sidenav-menu-nested nav">
+                                            <Link className="nav-link" to="/timetable">View Timetable</Link>
+                                            <Link className="nav-link" to="#">Add Timetable</Link>
+                                        </nav>
+                                    </div>
 
                                 </div>
                             </div>
@@ -115,10 +126,10 @@ const Dashboard = () => {
 
                                 <div className="row justify-content-between p-3">
                                     <div className="col-md-6 row justify-content-between p-3 abc">
-                                        <h4  className="abc1">Faculty detail</h4>
+                                        <h4  className="abc1">Teacher detail</h4>
                                         <div className="col-md-6">
                                             <div className="card text-white" >
-                                                <div className="card-body">Show Faculty Details</div>
+                                                <div className="card-body">Show Details</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
                                                     <Link className="small text-white stretched-link" to="/viewfaculty">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -127,9 +138,9 @@ const Dashboard = () => {
                                         </div>
                                         <div className="col-md-6">
                                             <div className="card text-white ">
-                                                <div className="card-body">Add Faculty</div>
+                                                <div className="card-body">Add Teacher</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
-                                                    <Link className="small text-white stretched-link" to="/addfaculty">Add Details</Link>
+                                                    <Link className="small text-white stretched-link" to="/addfaculty">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                                 </div>
                                             </div>
@@ -140,7 +151,7 @@ const Dashboard = () => {
                                         <h4 className="abc1">Students detail</h4>
                                         <div className="col-md-6">
                                             <div className="card text-white ">
-                                                <div className="card-body">Show Student Details</div>
+                                                <div className="card-body">Show Details</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
                                                     <Link className="small text-white stretched-link" to="/viewstudent">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -151,7 +162,7 @@ const Dashboard = () => {
                                             <div className="card text-white ">
                                                 <div className="card-body">Add Student</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
-                                                    <Link className="small text-white stretched-link" to="/addstudent">Add Details</Link>
+                                                    <Link className="small text-white stretched-link" to="/addstudent">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                                 </div>
                                             </div>
@@ -169,7 +180,7 @@ const Dashboard = () => {
                                         <h4 className="abc1">Courses detail</h4>
                                         <div className="col-md-6">
                                             <div className="card text-white">
-                                                <div className="card-body">Show Course Details</div>
+                                                <div className="card-body">Show Details</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
                                                     <Link className="small text-white stretched-link" to="/viewcourse">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -180,7 +191,7 @@ const Dashboard = () => {
                                             <div className="card text-white ">
                                                 <div className="card-body">Add Course</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
-                                                    <Link className="small text-white stretched-link" to="/addcourse">Add Details</Link>
+                                                    <Link className="small text-white stretched-link" to="/addcourse">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                                 </div>
                                             </div>
@@ -191,7 +202,7 @@ const Dashboard = () => {
                                         <h4 className="abc1">Subjects detail</h4>
                                         <div className="col-md-6">
                                             <div className="card text-white ">
-                                                <div className="card-body">Show Subject Details</div>
+                                                <div className="card-body">Show Details</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
                                                     <Link className="small text-white stretched-link" to="/viewsubject">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -202,7 +213,7 @@ const Dashboard = () => {
                                             <div className="card text-white ">
                                                 <div className="card-body">Add Subject</div>
                                                 <div className="card-footer d-flex align-items-center justify-content-between">
-                                                    <Link className="small text-white stretched-link" to="/addsubject">Add Details</Link>
+                                                    <Link className="small text-white stretched-link" to="/addsubject">View Details</Link>
                                                     <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                                 </div>
                                             </div>
@@ -239,7 +250,10 @@ const Dashboard = () => {
                 
             </body>
         </html>
+
+
+
     );
 };
 
-export default Dashboard;
+export default AdminDashboard;

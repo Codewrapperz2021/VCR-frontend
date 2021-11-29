@@ -31,7 +31,6 @@ export default function Viewcourse() {
       <tbody>
         {courses.map(course => <tr>
           <td>{course.id}</td>
-
           <td>{course.cname}</td>
           <div><td><Deletecourse id={course.id} /> &nbsp;
           <Link to= {"/updatecourse/"+course.id}>

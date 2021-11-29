@@ -3,21 +3,23 @@ import courseservices from '../../services/courseservices';
 import '../../form.css';
 import { useParams } from 'react-router';
 
+
 export default function Updatecourse() {
   const {id} = useParams();
-  const [sname, setcName] = useState('');
- 
+  const [cname, setcName] = useState('');
   
 
   function handlesubmit() {
-    const data = { cname:sname}
+    const data = { cname:cname}
     courseservices.updatecourse(id, data)
+    
   }
   useEffect(() => {
     courseservices.courseById(id)
       .then(res => {
         const persons = res.data;
         setcName(persons.cname);
+       
       })
      
   },[])
@@ -30,7 +32,7 @@ export default function Updatecourse() {
             <h3 className="text-center">Update Cource</h3>
             <hr />
             <label for=""><b>Course Name</b></label>
-            <input type="text" name='sname' defaultValue={sname} onChange={(e) => setcName(e.target.value)} />
+            <input type="text" name='sname' defaultValue={cname} onChange={(e) => setcName(e.target.value)} />
             
             <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
           </div>

@@ -1,5 +1,6 @@
 import React,{ useState} from 'react';
 import subjectservices from '../../services/subjectservices';
+import swal from 'sweetalert';
 
 export default function Deletesubject(props)  {
   const [id] = useState('');
@@ -9,6 +10,10 @@ export default function Deletesubject(props)  {
       var id=props.id
       subjectservices.deletesubject(id)
         .then(res => {
+          swal("deleted","data deleted successfully","success" ,{
+            buttons: false,
+            timer: 2000,
+          });
       })
       console.log(props.id)
   }  
