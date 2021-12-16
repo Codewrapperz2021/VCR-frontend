@@ -137,3 +137,17 @@ body{
     line-height: inherit;
 
 }
+.Schedule{
+    background-color: black;
+    color: white;
+    padding: 13px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 10px;
+    width: 10%;
+  }
+  .Schedule:hover {
+    opacity: 1;
+  }
