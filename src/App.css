@@ -11723,3 +11723,95 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+
+.que{
+  /* background-color: #000; */
+  height: 100px;
+  
+}
+.clr-white{
+  background-color: white!important;
+}
+
+.assessment{
+  margin-top: 70px;
+}
+
+.ass-box{
+  background-color: #000;
+  height: 100px;
+}
+
+.tabvar{
+  
+  padding-top: 200px;
+}
+
+.nav-pills{
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.tab-content {
+  margin: 0px auto;
+}
+
+.question{
+  width: 80%;
+}
+
+.radio{
+  height: 20px;
+  width: 20px;
+}
+
+.papi{
+  height: 100vh;
+ 
+  display: flex;
+  align-items: center;
+}
+
+.negotiate ul li{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #819FF7;
+  
+}
+
+.negotiate-margin ul li{
+  margin: 5px;
+  padding: 5px;
+  background-color: #6E6E6E;
+}
+.bg-primary-light{
+  background-color: #819FF7;
+}
+
+.list_style ul li a{
+  color: white;
+  text-decoration: none;
+}
+
+.hey div{
+  margin-top: 10px;
+  padding: 10px;
+}
+.bg-light-white{
+  background-color: white;
+}
+
+.mar-top{
+  margin-top: 10px;
+}
+
+.hand{
+  position: absolute;
+  bottom: 0;
+}
+
+.margin-auto{
+  margin:0 auto;
+}
+

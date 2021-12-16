@@ -110,3 +110,30 @@ body{
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
+.Schedule{
+        border-radius: 10px;
+        background-color: #0d6efd;
+        color: white;
+        padding: 7px 9px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    
+}
+.lecture{
+    border-radius: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.course_select{
+    border-radius: 10px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 23px!important;
+    line-height: inherit;
+
+}

@@ -31,10 +31,10 @@ export default function Viewsubject() {
 
           <td>{subject.sname}</td>
           <td>{subject.subject_code}</td>
-          <div><td><Deletesubject id={subject.id} /> &nbsp;
+          <td><Deletesubject id={subject.id} /> &nbsp;
           <Link to= {"/updatesubject/"+subject.id}>
               <button class="btn btn-primary">Edit</button>      
-          </Link></td></div>
+          </Link></td>
         </tr>)
         }
       </tbody>

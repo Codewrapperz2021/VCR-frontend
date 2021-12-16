@@ -1,6 +1,4 @@
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -13,13 +11,14 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password],input[type=date],input[type=email] {
+input[type=text], input[type=password],input[type=date],input[type=email],input[type=time] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
+  border-radius: 7px;
 }
 
 input[type=text]:focus, input[type=password]:focus,input[type=date]:focus,input[type=email]:focus {
@@ -34,7 +33,7 @@ hr {
 }
 
 /* Set a style for the submit button */
-.registerbtn {
+.registerbtn,.addbtn,.updatebtn,.loginbtn {
   background-color: black;
   color: white;
   padding: 16px 20px;
@@ -43,15 +42,43 @@ hr {
   cursor: pointer;
   width:100%;
   opacity: 0.9;
+  border-radius: 10px;
 }
+.forgetbtn{
+  color: black;
+  align-items: center;
+}
+.logresbtn:hover{
+  color: white;
+}
+.logresbtn{
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width:100%;
+  opacity: 0.9;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
 
 .registerbtn:hover {
   opacity: 1;
 }
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
+.addbtn:hover{
+  opacity: 1;
+}
+.updatebtn:hover{
+  opacity: 1;
+}
+.loginbtn:hover{
+  opacity: 1;
+}
+.forgetbtn:hover{
+  opacity: 1;
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
@@ -59,3 +86,28 @@ a {
   background-color: #f1f1f1;
   text-align: center;
 }
+.login{
+  margin-top: 120px;
+  font-weight: 1000;
+  font-size: 50px;
+}
+.text{
+  font-size: 20px;
+  margin-top:-55px;
+}
+.loginlogo{
+    margin-top: 120px;
+    width: 35px;
+    height: 35px;
+    animation: mymove 2s infinite;
+  }
+  
+  @keyframes mymove {
+    100% {transform: rotate(10000000000deg);}
+  }
+
+  .logo_image{
+    position:relative;
+    top: -60px;
+  }
+

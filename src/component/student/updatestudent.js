@@ -45,7 +45,7 @@ export default function Updatestudent() {
             <input id="email" type="email" placeholder="name@example.com" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
             <label for=""><b>Phone</b></label>
             <input id="phone" type="text" placeholder="Enter your phone number" defaultValue={phone} onChange={(e) => setPhone(e.target.value)} />
-            <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
+            <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
           </div>
         </div>
     </form>

@@ -1,70 +1,11 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import Path from "./path";
 
 
-import AdminDashboard from './component/dashboard/admindashboard';
-import StudentDashboard from './component/dashboard/studentdashboard';
-import TeacherDashboard from './component/dashboard/teacherdashboard';
-
-
-import Timetable from './component/timetable';
-import Addfaculty from './component/faculty/addfaculty';
-import Viewfaculty from './component/faculty/viewfaculty';
-import Updatefaculty from './component/faculty/updatefaculty';
-
-import Addstudent from './component/student/addstudent';
-import Viewstudent from './component/student/viewstudent';
-import Updatestudent from './component/student/updatestudent';
-
-import Addsubject from './component/subject/addsubject';
-import Viewsubject from './component/subject/viewsubject';
-import Updatesubject from './component/subject/updatesubject';
-
-import Addcourse from './component/course/addcourse';
-import Viewcourse from './component/course/viewcourse';
-import Updatecourse from './component/course/updatecourse';
-
-
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
+export default function App() {
         return (
             <div>
-                <Router>
-
-                    <Routes>
-                        <Route path="/admindashboard" element={<AdminDashboard />} />
-                        <Route path="/studentdashboard" element={<StudentDashboard />} />
-                        <Route path="/teacherdashboard" element={<TeacherDashboard />} />
-
-
-
-                        <Route path="/timetable" element={<Timetable />} />
-
-
-                       
-                        <Route path="/viewfaculty" element={<Viewfaculty />} />
-                        <Route path="/addfaculty" element={<Addfaculty />} />
-                        <Route exact path={"updatefaculty/:id"} element={<Updatefaculty />} />
-
-                        <Route path="/viewstudent" element={<Viewstudent />} />
-                        <Route path="/addstudent" element={<Addstudent />} />
-                        <Route exact path={"updatestudent/:id"} element={<Updatestudent />} />
-
-                        <Route path="/viewsubject" element={<Viewsubject />} />
-                        <Route path="/addsubject" element={<Addsubject />} />
-                        <Route exact path={"updatesubject/:id"} element={<Updatesubject />} />
-
-                        <Route path="/viewcourse" element={<Viewcourse />} />
-                        <Route path="/addcourse" element={<Addcourse />} />
-                        <Route exact path={"updatecourse/:id"} element={<Updatecourse />} />
-                    </Routes>
-
-                </Router>
-
+               <Path/> 
             </div>
         )
-    }
 }

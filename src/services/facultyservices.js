@@ -22,9 +22,9 @@ class facultyservices{
         return axios.delete(FACULTYSERVICES_BASE_URL+faculty_id);
     }
 
-    addfaculty(faculty)
+    addfaculty(faculty,subject_id)
     {
-        return axios.post(FACULTYSERVICES_BASE_URL,faculty);
+        return axios.post(FACULTYSERVICES_BASE_URL,faculty,subject_id);
     }
 }
 

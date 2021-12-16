@@ -1,22 +1,27 @@
 import courseservices from '../../services/courseservices';
 import React, { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import '../../form.css';
 export default function Addcourse() {
     const  initialValues={cname:""};
     const [formValues, setformValues] = useState(initialValues);
     const [formErrors, setformErrors] = useState({});
     const[isSubmit , setIsSubmit]=useState(false);
+    let navigate = useNavigate();
+
     
-   
+    function showDash() {
+        navigate('/admindashboard')
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
         const data = { cname: formValues.cname}
         courseservices.addcourse(data)
-        
+        showDash()
         setformErrors(validate(formValues));
         setIsSubmit(true);
-        
+
         }
     
     const handleChange=(e)=>{
@@ -51,7 +56,7 @@ export default function Addcourse() {
                         <input id="cname"name="cname" type="text" placeholder="Enter the cource name" value={formValues.cname} onChange={handleChange} />
                         </div>
                         <p style={{color:"red"}}>{formErrors.cname}</p>
-                        <button id="button" class="registerbtn" >Submit</button>
+                        <button id="button" class="addbtn" >Submit</button>
                     </div>
                 </div>
             </form>

@@ -23,9 +23,9 @@ class subjectservices{
         return axios.delete(SUBJECTSERVICES_BASE_URL+subject_id);
     }
 
-    addsubject(subject)
+    addsubject(subject,course_id)
     {
-        return axios.post(SUBJECTSERVICES_BASE_URL,subject);
+        return axios.post(SUBJECTSERVICES_BASE_URL,subject,course_id);
     }
 }
 

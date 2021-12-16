@@ -31,26 +31,26 @@ const validate = (values) => {
   let phone = /^([0-9]){10}$/;
   let email = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
   if (!values.firstName) {
-    errors.firstName = "firstname is required";
+    errors.firstName = "first name is required*";
   } else if(!fname.test(values.firstName)){
     errors.firstName = "please enter your valid name";
   }
   if (!values.lastName) {
-    errors.lastName = "lastname is required";
+    errors.lastName = "last name is required*";
   }
   else if(!lname.test(values.lastName)){
     errors.lastName = "please enter your valid name";
   }
   if (!values.address) {
-    errors.address = "address is required";
+    errors.address = "address is required*";
   }
   if(!values.email) {
-    errors.email = "email is required";
+    errors.email = "email is required*";
   }else if(!email.test(values.email)){
     errors.email = "please enter valid email";
   }
   if (!values.phone) {
-    errors.phone = "phone is required";
+    errors.phone = "phone is required*";
   }else if(!phone.test(values.phone)){
     errors.phone = "please enter valid phone number";
   }
@@ -64,31 +64,31 @@ return (
           <h3 className="text-center">Add Faculty</h3>
           <hr />
           <div>
-          <label for=""><b>First Name</b></label>
+          <label for=""><b>First Name*</b></label>
           <input id="fname" name="firstName" type="text" placeholder="Enter your first name" value={formValues.firstName} onChange={handleChange} />
           </div>
           <p style={{color:"red"}}>{formErrors.firstName}</p>
           <div>
-          <label for=""><b>Last Name</b></label>
+          <label for=""><b>Last Name*</b></label>
           <input id="lname" name="lastName" type="text" placeholder="Enter your last name" value={formValues.lastName} onChange={handleChange} />
           </div>
           <p style={{color:"red"}}>{formErrors.lastName}</p>
           <div>
-          <label for=""><b>Address</b></label>
+          <label for=""><b>Address*</b></label>
           <input id="address" name="address"type="text" placeholder="enter address" value={formValues.address} onChange={handleChange} />
           </div>
           <p style={{color:"red"}}>{formErrors.address}</p>
           <div>
-          <label for=""><b>Email</b></label>
+          <label for=""><b>Email*</b></label>
           <input id="email" name="email" type="email" placeholder="name@example.com" value={formValues.email} onChange={handleChange} />
           </div>
           <p style={{color:"red"}}>{formErrors.email}</p>      
           <div>
-          <label for=""><b>Phone</b></label>
+          <label for=""><b>Phone*</b></label>
           <input id="phone" type="text" name="phone" placeholder="Enter your phone number" value={formValues.phone} onChange={handleChange} />
           </div>
           <p style={{color:"red"}}>{formErrors.phone}</p>      
-          <button id="button" class="registerbtn">Submit</button>
+          <button id="button" class="addbtn">Submit</button>
         </div>
       </div>
     </form>

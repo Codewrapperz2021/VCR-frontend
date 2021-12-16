@@ -35,7 +35,7 @@ export default function Updatesubject() {
              <label for=""><b>Subject Code</b></label>
              <input type="text" name='subject_code' value={subjectCode} onChange={(e) => setsubjectCode(e.target.value)} />
             
-            <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
+            <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
           </div>
         </div>
     </form>

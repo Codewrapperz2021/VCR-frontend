@@ -8,7 +8,6 @@ export default function Updatecourse() {
   const {id} = useParams();
   const [cname, setcName] = useState('');
   
-
   function handlesubmit() {
     const data = { cname:cname}
     courseservices.updatecourse(id, data)
@@ -32,9 +31,8 @@ export default function Updatecourse() {
             <h3 className="text-center">Update Cource</h3>
             <hr />
             <label for=""><b>Course Name</b></label>
-            <input type="text" name='sname' defaultValue={cname} onChange={(e) => setcName(e.target.value)} />
-            
-            <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
+            <input type="text" name='sname' defaultValue={cname} onChange={(e) => setcName(e.target.value)} />            
+            <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
           </div>
         </div>
     </form>

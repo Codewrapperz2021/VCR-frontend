@@ -41,11 +41,10 @@ export default function Viewfaculty() {
           <td> {person.email}</td>
           <td>{person.phone}</td>
           <td>{person.dob}</td>
-          <div><td><Deletefaculty id={person.id} /> &nbsp;
-            {/* <input className="btn btn-primary" type="button" id={person} value="Edit" onClick={(e) => window.location.replace('/updateFaculty/' + person.id)} /></td></div> */}
+          <td><Deletefaculty id={person.id} /> &nbsp;
           <Link to= {"/updatefaculty/"+person.id}>
               <button class="btn btn-primary">Edit</button>      
-          </Link></td></div>
+          </Link></td>
         </tr>)
         }
       </tbody>

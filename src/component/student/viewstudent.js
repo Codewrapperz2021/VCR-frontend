@@ -41,10 +41,10 @@ export default function Viewstudent() {
           <td> {person.email}</td>
           <td>{person.phone}</td>
           <td>{person.address}</td>
-          <div><td><Deletestudent id={person.id} /> &nbsp;
+          <td><Deletestudent id={person.id} /> &nbsp;
           <Link to= {"/updatestudent/"+person.id}>
               <button class="btn btn-primary">Edit</button>      
-          </Link></td></div>
+          </Link></td>
         </tr>)
         }
       </tbody>

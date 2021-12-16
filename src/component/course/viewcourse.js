@@ -32,10 +32,10 @@ export default function Viewcourse() {
         {courses.map(course => <tr>
           <td>{course.id}</td>
           <td>{course.cname}</td>
-          <div><td><Deletecourse id={course.id} /> &nbsp;
+          <td><Deletecourse id={course.id} /> &nbsp;
           <Link to= {"/updatecourse/"+course.id}>
               <button class="btn btn-primary">Edit</button>      
-          </Link></td></div>
+          </Link></td>
         </tr>)
         }
       </tbody>
