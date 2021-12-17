@@ -6,12 +6,14 @@ export default function Assessment_1() {
 
     const hoursMinSecs = { minutes: 20, seconds: 0 }
     const [student_answer, setStudent_answer] = useState();
-    
+    const [formdata, setFormdata] = useState({
+        option:""
+    })
     const [questions, setQuestion] = useState([]);
     const [id, setId] = useState(0);
     const submitHandler = (e) => {
         e.preventDefault();
-        const data = { student_answer: student_answer, q_id: id + 1};
+        const data = { student_answer: formdata, q_id: id + 1};
         studentassessmentservices.addstudentassesment(data);    
     }
 
@@ -24,8 +26,8 @@ export default function Assessment_1() {
     }, [])
 
     const StoreResult = () =>{
-        
-        const data = { student_answer: student_answer, q_id: id + 1};
+         
+        const data = { student_answer: formdata, q_id: id + 1};
         
         console.log("data",data);
       }
@@ -41,6 +43,16 @@ export default function Assessment_1() {
         setId(id - 1);
         StoreResult();
     
+    }
+
+    const handlechange = e =>{
+        const target = e.target
+        const name = target.name
+        const value = target.value
+        setFormdata({
+            ...formdata,
+            [name]:value
+        })
     }
 
 
@@ -107,24 +119,24 @@ export default function Assessment_1() {
                         </div>
                         <div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans1} id="1" onChange={(e) => { setStudent_answer(e.target.value) }} />
+                                <input type="radio"  name="option" value={questions[id]?.ans1} checked={formdata.option==questions[id]?.ans1} id="1" onChange={handlechange} />
                                 <span >{questions[id]?.ans1}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio" name="option" unchecked="checked" value={questions[id]?.ans2} id="2" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio" name="option"  value={questions[id]?.ans2} checked={formdata.option==questions[id]?.ans2}  id="2" onChange={handlechange} />
                                 <span>{questions[id]?.ans2}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans3} id="3" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio"  name="option"  value={questions[id]?.ans3} checked={formdata.option==questions[id]?.ans3}  id="3" onChange={handlechange} />
                                 <span>{questions[id]?.ans3}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans4} id="4" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio"  name="option"  value={questions[id]?.ans4} checked={formdata.option==questions[id]?.ans4}  id="4" onChange={handlechange} />
                                 <span>{questions[id]?.ans4}</span>
                             </div>
                         </div>
                         {/* <div>
-                            <p>Option:{formData.option}</p>
+                            <p>Option:{formdata.option}</p>
                         </div> */}
                         <div className=" text-center ">
                             <input className="btn btn-dark" type="submit" style={{visibility:id===3? 'visible':"hidden", }} />
