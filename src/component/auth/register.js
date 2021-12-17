@@ -1,6 +1,5 @@
 import authservices from '../../services/authservices';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import '../../form.css'
 import { useNavigate } from 'react-router';
@@ -26,7 +25,7 @@ export default function Register() {
       console.log(res)
     })
   }else{
-    alert('aja')
+    alert('please select role')
   }
   }
 

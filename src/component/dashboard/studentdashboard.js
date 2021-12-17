@@ -5,14 +5,14 @@ import { Link, NavLink } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import Deletesubject from '../subject/deletesubject';
 import subjectservices from '../../services/subjectservices';
-
+import { useSelector } from 'react-redux';
 
 
 
 
 const StudentDashboard = () => {
     const [subjects, setSubjects] = useState([]);
-
+    const data = useSelector(state => state.UserData)
     useEffect(() => {
         subjectservices.viewsubject()
             .then(res => {
@@ -53,14 +53,14 @@ const StudentDashboard = () => {
                         </div>
                     </form>
 
-
+                    <button type="button"class="btn btn-warning ">Hii, {data.user.name}</button>
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <li><a className="dropdown-item" href="#!">Logout</a></li>
-                                <li><a className="dropdown-item" href="#!"></a></li>
+                            <li className='text-center hey'><a type="button" class="btn btn-warning" href="/">Logout</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
