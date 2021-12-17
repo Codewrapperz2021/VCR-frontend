@@ -18,12 +18,6 @@ export default function Timetable() {
     const [days, setDays] = useState([]);
     const [selectcourseID, setSelectcourseID] = useState(0)
     const [selectsubjectID, setSelectsubjectID] = useState(0)
-    // const [selectsubjecttue, setSelectsubjecttue] = useState(0)
-    // const [selectsubjectwed, setSelectsubjectwed] = useState(0)
-    // const [selectsubjectthr, setSelectsubjectthr] = useState(0)
-    // const [selectsubjectfri, setSelectsubjectfri] = useState(0)
-    // const [selectsubjectsat, setSelectsubjectsat] = useState(0)
-    // const [selectsubjectsun, setSelectsubjectsun] = useState(0)
  
     console.log(subjects)
 
@@ -68,7 +62,7 @@ export default function Timetable() {
                     <img src="img/content/timetable.png" alt="" />
                 </div>
                 <div class="table-responsive">
-                    <h2 class="text-center"><select class="lecture course_select" name="course" onChange={(e) => { setSelectcourseID(e.target.value); setFlag(true) }}>
+                    <h2 class="text-center"><select class="lecture select_drop" name="course" onChange={(e) => { setSelectcourseID(e.target.value); setFlag(true) }}>
                 <option value={0}>Select Course</option>
                 {courses.map(course =>
                     <option value={course.id}>{course.cname}</option>
@@ -77,6 +71,7 @@ export default function Timetable() {
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr class="bg-light-gray">
+                                <th>TIME/DAY</th>
                                 {days.map(day =>
                                     <th class="text-uppercase" value={day.day_name}>{day.day_name}</th>
                                 )}
@@ -147,8 +142,7 @@ export default function Timetable() {
                                             <option value={0}>Select Faculty</option>
                                             {faculties.map(faculty => { return (<option value={faculty.first_name}>{faculty.first_name}</option>) })}
                                         </select>
-                                    </td>
-                                   
+                                    </td> 
                                 </tr>
                             )}
                         </tbody> 

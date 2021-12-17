@@ -22,7 +22,7 @@ export default function Login() {
     }
 
     function showteacherDash() {
-        navigate('/facultydashboard')
+        navigate('/teacherdashboard')
     }
 
 
@@ -30,12 +30,10 @@ export default function Login() {
         e.preventDefault();
         const data = { email: email, password: password }
         authservices.login(data).then((res) => {
-        
             if (res.data.user.email === data.email &&res.data.user.role === 'admin') {
                 swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                     buttons: false,
                     timer: 2000,
-                   
                 });
                 let name=res.data
                dispatch({ type: 'LOGIN', payload: name })
