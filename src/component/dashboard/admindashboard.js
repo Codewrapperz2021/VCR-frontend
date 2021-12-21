@@ -10,9 +10,9 @@ const AdminDashboard = () => {
     const data = useSelector(state => state.UserData)
     console.log(data.token)
 const logout = (token)=>{
-    const data = {headers: {
-        headers: { Authorization: `Bearer ${token}` }
-      }
+    const data = {
+        headers: {Accept:'application/json','Content-Type':'application/x-www-form-urlencoded',Authorization: `Bearer ${token}` }
+      
     }
     axios.post('http://localhost:8000/api/logout',data)
 }
@@ -50,7 +50,7 @@ const logout = (token)=>{
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img className='profile' src={`http://localhost:8000/images/${data.user.profileimage}`}/></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <li><a className="dropdown-item"onClick={()=>logout(data.token)}>Logout</a></li>
+                                <li><a className="dropdown-item" onClick={()=>logout(data.token)}>Logout</a></li>
                             </ul>
                         </li>
                     </ul>
