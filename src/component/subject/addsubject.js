@@ -63,7 +63,7 @@ export default function Addsubjct() {
                         <h3 className="text-center">Add Subject</h3>
                         <hr />
                         <div>
-                            <select  name="coursename" value={formValues.coursename} onChange={handleChange}>
+                            <select className='select_drop'  name="coursename" value={formValues.coursename} onChange={handleChange}>
                                 {courses.map(course =>
                                     <option  value={course.cname} >{course.cname}</option>
                                 )}

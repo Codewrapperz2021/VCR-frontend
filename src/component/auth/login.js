@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import authservices from '../../services/authservices';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,12 +29,10 @@ export default function Login() {
         e.preventDefault();
         const data = { email: email, password: password }
         authservices.login(data).then((res) => {
-        
             if (res.data.user.email === data.email &&res.data.user.role === 'admin') {
                 swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                     buttons: false,
                     timer: 2000,
-                   
                 });
                 let name=res.data
                dispatch({ type: 'LOGIN', payload: name })
@@ -68,13 +66,6 @@ export default function Login() {
         })
                     
     }
-    useEffect(()=>{
-
-//  console.log('state',mydata)
-
-    },[])
-    
-    //console.log('saransh', data.data)
     return (
         
         <div>
@@ -83,8 +74,7 @@ export default function Login() {
                     <div className='col-md-5 '>
                         <div className='text-center ' >
                             <h2 className='login'>Virtual Classr<span><img className='loginlogo logo_image ' src="images/Rclogo.jpg" alt="" /></span><span><img className='loginlogo logo_image ' src="images/Rclogo.jpg" alt="" /></span>m</h2>
-                            <p className='text'>Helps to easily manage virtual classes, online attendence and managing timetable and marks </p>
-                      
+                            <p className='text'>Helps to easily manage virtual classes, online attendence and managing timetable and marks </p>                      
                         </div>
                     </div>
                     <div className='col-md-7'>

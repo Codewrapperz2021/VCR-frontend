@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Assessment = () => {
     return (
@@ -16,7 +17,7 @@ const Assessment = () => {
                                 <h5 class="card-title">Give Your Assessment On Apptitude</h5>
                                 <p class="card-text">Topics: Percentage, Averages, Ratio & Proportion, Speed Distance & Time, Time & Work, Pipe & Cistern</p>
                                 <p class="card-text"></p>
-                                <a href="/assessment-1" class="btn btn-primary">Take Test</a>
+                                <Link to="/assessment-1" class="btn btn-primary">Take Test</Link>
                             </div>
                         </div>
                     </div>

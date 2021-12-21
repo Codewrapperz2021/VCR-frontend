@@ -10,7 +10,7 @@ export default function Resetpassword() {
                   <h3 className="text-center">Reset Password</h3>
                   <hr />
                   <label for=""><b>Enter new password</b></label>
-                  <input id="name" type="text" placeholder="Enter your password" />
+                  <input id="name" type="password" placeholder="Enter your password" />
                   <label for=""><b>Confirm new Password</b></label>
                   <input id="password" type="password" placeholder="Enter your password again" />
                   <button id="button" class="registerbtn"  >Submit</button>

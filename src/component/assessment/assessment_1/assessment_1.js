@@ -2,17 +2,28 @@ import React, { useState, useEffect } from 'react';
 import questionservices from '../../../services/questionservices'
 import studentassessmentservices from '../../../services/studentassessment';
 import CountDownTimer from './countdowntimer'
+import { useSelector } from 'react-redux';
 export default function Assessment_1() {
 
     const hoursMinSecs = { minutes: 20, seconds: 0 }
-    const [student_answer, setStudent_answer] = useState();
-    
+    const [formdata, setFormdata] = useState({
+        option: ""
+    })
+    const data = useSelector(state => state.UserData)
+    const [answer, setAnswer] = useState([]);
     const [questions, setQuestion] = useState([]);
     const [id, setId] = useState(0);
+    const [multidata, setMultidata] = useState([]);
+    const s_id = data.user.id;
+    const [count, setCount] = useState(1);
+
     const submitHandler = (e) => {
         e.preventDefault();
-        const data = { student_answer: student_answer, q_id: id + 1};
-        studentassessmentservices.addstudentassesment(data);    
+        StoreResult(); 
+       
+        // const data = { student_answer: formdata, q_id: questions[id]?.id};
+        studentassessmentservices.addstudentassesment(multidata);
+        console.log("result",multidata)
     }
 
     useEffect(() => {
@@ -23,56 +34,44 @@ export default function Assessment_1() {
             })
     }, [])
 
-    const StoreResult = () =>{
-        
-        const data = { student_answer: student_answer, q_id: id + 1};
-        
-        console.log("data",data);
-      }
-    
-    
+    const StoreResult = () => {
+        const data = { student_answer: formdata.option, q_id: questions[id]?.id, s_id: s_id };
+        multidata.push(data)
+        console.log(multidata)
+    }
+
     const saveAndNext = () => {
         setId(id + 1);
+        setCount(count=>count+1)
         StoreResult();
-    
-    }
 
+    }
     const saveAndPrev = () => {
         setId(id - 1);
+        setCount(count=>count-1)
         StoreResult();
-    
     }
 
-
-
-
-
-    // 
-    // const handleOption = e => {
-
-    //     const target = e.target
-    //     const name = target.name
-    //     const value = target.value
-
-    //     setFormData({
-    //         ...formData,
-    //         [name]: value
-    //     })
-
-
-    // console.log(formData[1].option)
-    // studentassessmentservices.addstudentassesment(formData[1].option)
-
-
-
-
+    const handlechange = e => {
+        const target = e.target
+        const name = target.name
+        const value = target.value
+        setFormdata({
+            ...formdata,
+            [name]: value
+        })
+    }
 
     return (
         <div>
             <div className="container-fluid bg-success vh-100 bg-opacity-10">
-                <div className="row text-center bg-primary-light">
-                    <span className=" text-light">Time Left<CountDownTimer hoursMinSecs={hoursMinSecs} /></span>
-
+                <div className="row d-flex justify-content-center bg-primary-light">
+                    <div className='col-md-6 '>
+                        <span className=" text-light float-end">Time Left<CountDownTimer hoursMinSecs={hoursMinSecs} /></span>
+                    </div>
+                    <div className='col-md-5 text-white'>
+                        <span className='float-end'>{data.user.name}</span>
+                    </div>
                 </div>
                 <div className="row border d-flex align-center bg-light-white">
                     <div className="col-md-6 list_style negotiate">
@@ -83,10 +82,7 @@ export default function Assessment_1() {
                         </ul>
                     </div>
                 </div>
-
                 <form className="row" onSubmit={(e) => { submitHandler(e) }}>
-
-
                     <div className="col-md-5 text-center d-flex flex-column hey">
                         <div className="border bg-light-white">
                             <span className="">Question:{id + 1}</span>
@@ -96,9 +92,8 @@ export default function Assessment_1() {
                             <hr />
                         </div>
                         <div className="mt-4 ">
-                            {/* {console.log('saransh',questions[id]?.id)} */}
-                            <div className="btn btn-dark float-start 0"  onClick={()=>saveAndPrev()}>Previous</div>
-                            <div className="btn btn-dark float-end" onClick={()=>saveAndNext()}>Next </div>
+                            <div className="btn btn-dark float-start 0" style={{ visibility: id === 0 ? 'hidden' : "visible" }} onClick={() => saveAndPrev()}>Previous</div>
+                            <div className="btn btn-dark float-end" style={{ visibility: id === questions.length - 1 ? 'hidden' : "visible", }} onClick={() => saveAndNext()}>Next </div>
                         </div>
                     </div>
                     <div className="col-md-4  d-flex flex-column hey">
@@ -107,32 +102,27 @@ export default function Assessment_1() {
                         </div>
                         <div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans1} id="1" onChange={(e) => { setStudent_answer(e.target.value) }} />
+                                <input type="radio" name="option" value={questions[id]?.ans1} checked={formdata.option == questions[id]?.ans1} id="1" onChange={handlechange} />
                                 <span >{questions[id]?.ans1}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio" name="option" unchecked="checked" value={questions[id]?.ans2} id="2" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio" name="option" value={questions[id]?.ans2} checked={formdata.option == questions[id]?.ans2} id="2" onChange={handlechange} />
                                 <span>{questions[id]?.ans2}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans3} id="3" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio" name="option" value={questions[id]?.ans3} checked={formdata.option == questions[id]?.ans3} id="3" onChange={handlechange} />
                                 <span>{questions[id]?.ans3}</span>
                             </div>
                             <div className="border bg-light-white">
-                                <input type="radio"  name="option" unchecked="checked" value={questions[id]?.ans4} id="4" onChange={(e) => { setStudent_answer(e.target.value)}} />
+                                <input type="radio" name="option" value={questions[id]?.ans4} checked={formdata.option == questions[id]?.ans4} id="4" onChange={handlechange} />
                                 <span>{questions[id]?.ans4}</span>
                             </div>
                         </div>
-                        {/* <div>
-                            <p>Option:{formData.option}</p>
-                        </div> */}
                         <div className=" text-center ">
-                            <input className="btn btn-dark" type="submit" style={{visibility:id===3? 'visible':"hidden", }} />
+                            <input className="btn btn-dark" type="submit" style={{ visibility: id === questions.length - 1 ? 'visible' : "hidden", }} />
                         </div>
 
                     </div>
-
-
                     <div className="col-md-3 ">
 
                         <div class="accordion accordion-flush border mar-top" id="accordionFlushExample">
@@ -143,12 +133,13 @@ export default function Assessment_1() {
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body d-flex justify-content-around">
-                                        <div className="col-md-2 border p-2 text-center rounded-3">1</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">2</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">3</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">4</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">5</div>
+                                    <div class="accordion-body d-flex  justify-content-around">
+                                        {questions.map(id => (
+                                            <div className="col-md-2 border p-2 text-center rounded-3">{id.id}</div>
+
+                                        ))}
+                                        <div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -174,15 +165,6 @@ export default function Assessment_1() {
                                         Assessment 3
                                     </button>
                                 </h2>
-                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body d-flex justify-content-around">
-                                        <div className="col-md-2 border p-2 text-center rounded-3">1</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">2</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">3</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">4</div>
-                                        <div className="col-md-2 border p-2 text-center rounded-3">5</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -206,11 +188,8 @@ export default function Assessment_1() {
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     )
 }
-
-
