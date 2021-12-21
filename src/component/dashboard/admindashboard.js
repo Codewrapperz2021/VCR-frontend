@@ -5,18 +5,18 @@ import '../script';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import store from '../../store';
+import axios from 'axios'
 const AdminDashboard = () => {
-    const [name, setName] = useState('');
     const data = useSelector(state => state.UserData)
-    //  console.log("yewala",store.getState())
-    useEffect(() => {
-        // setName(data.res.data.user.name)
-        //  
-        // console.log('saransh',data.user.name)
-
-    }, [])
-
-    return (
+    console.log(data.token)
+const logout = (token)=>{
+    const data = {headers: {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    }
+    axios.post('http://localhost:8000/api/logout',data)
+}
+     return (
 
         <html lang="en">
             <head>
@@ -44,13 +44,13 @@ const AdminDashboard = () => {
 
                         </div>
                     </form>
-                    <button type="button"class="btn btn-warning ">Hii, {data.user.name}</button>
+                    <button type="button"class="btn btn-warning ">{data.user.name}</button>
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img className='profile' src={`http://localhost:8000/images/${data.user.profileimage}`}/></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <li className='text-center hey'><a type="button" class="btn btn-warning" href="/">Logout</a></li>
+                                <li><a className="dropdown-item"onClick={()=>logout(data.token)}>Logout</a></li>
                             </ul>
                         </li>
                     </ul>

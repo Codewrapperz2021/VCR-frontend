@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 
 
 import AdminDashboard from './component/dashboard/admindashboard';
@@ -44,10 +45,19 @@ import Updatequestion from './component/question/updatequestion';
 
 import Assessment from './component/student/Assessment';
 import Assessment_1 from './component/assessment/assessment_1/assessment_1';
+import { useSelector } from 'react-redux';
 
+
+    // axios.interceptors.request.use(function (config){
+    //     const data = useSelector(state => state.UserData)
+    //     const token = data.token
+    //     config.headers.Authorization = token ? `Bearer ${token}` : '';
+    //     return config;
+    // })
 
 
 export default function Path() {
+    
     return (
         <div>
             <Router>

@@ -9,7 +9,6 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const data = useSelector(state => state.UserData)
-    // const rolecheck = data.user.role;
     const dispatch = useDispatch();
     let navigate = useNavigate();
 
@@ -22,7 +21,7 @@ export default function Login() {
     }
 
     function showteacherDash() {
-        navigate('/facultydashboard')
+        navigate('/teacherdashboard')
     }
 
 

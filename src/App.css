@@ -11814,4 +11814,9 @@ body {
 .margin-auto{
   margin:0 auto;
 }
+.profile{
+  height:40px;
+  width: 40px;
+  border-radius:45%;
+}
 

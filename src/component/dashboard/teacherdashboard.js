@@ -1,11 +1,15 @@
 import React from 'react';
 import '../../App.css';
 import '../script';
+import { useSelector } from 'react-redux';
+
 import { Link, NavLink } from 'react-router-dom';
 
 
 
 const TeacherDashboard = () => {
+    const data = useSelector(state => state.UserData)
+
     return (
         <html lang="en">
             <head>
@@ -33,13 +37,15 @@ const TeacherDashboard = () => {
 
                     </div>
                     </form>
+                    <button type="button"class="btn btn-warning ">{data.user.name}</button>
+
                     
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                     <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
+                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img className='profile' src={`http://localhost:8000/images/${data.user.profileimage}`}/></a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                    <li><a className="dropdown-item" href="#!">Logout</a></li>
+                    <li><a className="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                     </li>
                     </ul>
