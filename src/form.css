@@ -108,7 +108,7 @@ hr {
     margin-top: 120px;
     width: 35px;
     height: 35px;
-    animation: mymove 2s infinite;
+    animation: mymove 20000000s infinite;
   }
   
   @keyframes mymove {
