@@ -20,6 +20,9 @@ export default function Viewstudent() {
 
     <table class="table table-bordered">
       <thead>
+        <a href="http://127.0.0.1:8000/api/student-export-excel" class="btn btn-primary">Excel</a>
+        <a href="http://127.0.0.1:8000/api/student-export-csv" class="btn btn-primary">CSV</a>
+
         <tr class="table-info">
           <th scope="col-2">S.no.</th>
 

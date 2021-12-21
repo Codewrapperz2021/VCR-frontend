@@ -8,6 +8,7 @@ import '../../form.css';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const data = useSelector(state => state.UserData)
     const dispatch = useDispatch();
     let navigate = useNavigate();
 
