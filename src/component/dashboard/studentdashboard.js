@@ -127,7 +127,7 @@ const StudentDashboard = () => {
                                         <div class="row g-0">
                                             <div class="col-md-8">
                                                 <div class="card-body ">
-                                                    <p> Welcome Back</p>
+                                                    <p> Welcome Back, {data.user.name}</p>
                                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                     <button className='btn btn-primary'>Learn More</button>
                                                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import authservices from '../../services/authservices';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,8 +8,6 @@ import '../../form.css';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const data = useSelector(state => state.UserData)
-    // const rolecheck = data.user.role;
     const dispatch = useDispatch();
     let navigate = useNavigate();
 
@@ -67,13 +65,6 @@ export default function Login() {
         })
                     
     }
-    useEffect(()=>{
-
-//  console.log('state',mydata)
-
-    },[])
-    
-    //console.log('saransh', data.data)
     return (
         
         <div>
@@ -82,8 +73,7 @@ export default function Login() {
                     <div className='col-md-5 '>
                         <div className='text-center ' >
                             <h2 className='login'>Virtual Classr<span><img className='loginlogo logo_image ' src="images/Rclogo.jpg" alt="" /></span><span><img className='loginlogo logo_image ' src="images/Rclogo.jpg" alt="" /></span>m</h2>
-                            <p className='text'>Helps to easily manage virtual classes, online attendence and managing timetable and marks </p>
-                      
+                            <p className='text'>Helps to easily manage virtual classes, online attendence and managing timetable and marks </p>                      
                         </div>
                     </div>
                     <div className='col-md-7'>
