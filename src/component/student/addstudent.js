@@ -1,15 +1,17 @@
 import studentservices from '../../services/studentservices';
+import courseservices from '../../services/courseservices';
 import React, { useState ,useEffect} from 'react';
 import '../../form.css'
 export default function Addstudent() {
-  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" };
+  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:""};
   const [formValues, setformValues] = useState(initialValues);
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [courses, setCourses] = useState([]);
 
 const submitHandler = (e) =>{
 e.preventDefault();
-const data = { first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address }
+const data = {  course_id:formValues.coursename,first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address }
 studentservices.addstudent(data)
 setformErrors(validate(formValues));
 setIsSubmit(true);
@@ -18,6 +20,12 @@ const handleChange = (e) => {
   const { name, value } = e.target;
   setformValues({ ...formValues, [name]: value })
 }
+useEffect(() => {
+  courseservices.viewcourse()
+    .then(res => {
+      setCourses(res.data);
+    })
+}, [])
 useEffect(() => {
   console.log(formErrors);
   if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -63,6 +71,13 @@ return (
         <div className="col-md-6 shadow p-4">
           <h3 className="text-center">Add Faculty</h3>
           <hr />
+          <div>
+              <select className='select_drop' name="coursename" value={formValues.coursename} onChange={handleChange}>
+                {courses.map(course =>
+                  <option value={course.cname} >{course.cname}</option>
+                )}
+              </select>
+            </div>
           <div>
           <label for=""><b>First Name*</b></label>
           <input id="fname" name="firstName" type="text" placeholder="Enter your first name" value={formValues.firstName} onChange={handleChange} />

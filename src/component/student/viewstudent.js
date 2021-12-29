@@ -29,6 +29,7 @@ export default function Viewstudent() {
           <th scope="col-2">First Name</th>
           <th scope="col-2">Last Name</th>
           <th scope="col-3">Email</th>
+          <th scope="col-3">Course</th>
           <th scope="col-3">Contact</th>
           <th scope="col-3">Address</th>
           <th scope="col-2">Action</th>
@@ -42,6 +43,7 @@ export default function Viewstudent() {
           <td>{person.first_name}</td>
           <td>{person.last_name}</td>
           <td> {person.email}</td>
+          <td> {person.cname}</td>
           <td>{person.phone}</td>
           <td>{person.address}</td>
           <td><Deletestudent id={person.id} /> &nbsp;
