@@ -18,7 +18,6 @@ export default function Viewsubject() {
       <thead>
         <tr class="table-info">
           <th scope="col-2">S.no.</th>
-
           <th scope="col-2">Subject Name</th>
           <th scope="col-2">Subject Code</th>
           <th scope="col-2">Action</th>

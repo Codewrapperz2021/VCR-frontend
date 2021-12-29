@@ -239,14 +239,7 @@ const logout = (token)=>{
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
                                 </div>
-
-
                             </div>
                         </main>
                         <footer className="py-4 bg-light mt-auto">
@@ -270,9 +263,6 @@ const logout = (token)=>{
 
             </body>
         </html>
-
-
-
     );
 };
 

@@ -1,10 +1,9 @@
-
 import '../../App.css';
 import '../script';
 import { Link, NavLink } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
-import Deletesubject from '../subject/deletesubject';
 import subjectservices from '../../services/subjectservices';
+import studentservices from '../../services/studentservices';
 import { useSelector } from 'react-redux';
 import axios from 'axios'
 
@@ -13,18 +12,31 @@ import axios from 'axios'
 
 
 const StudentDashboard = () => {
+
     const [subjects, setSubjects] = useState([]);
+    const [student, setStudent] = useState([]);
+    const [course, setCourse] = useState();
     const data = useSelector(state => state.UserData)
+    let sn=1;
     useEffect(() => {
         subjectservices.viewsubject()
             .then(res => {
                 const subject = res.data;
                 setSubjects(subject);
             })
+            studentservices.viewstudent()
+            .then(res=>{
+                const students = res.data;
+                setStudent(students)
+            })  
+            for(let i=0; i<student.length;i++){
+                if(student[i].email==data.user?.email){
+                 setCourse(student[i]?.course_id)
+                }
+             }
+             console.log(data.user?.email) 
     }, [])
-
-
-    const logout = (token)=>{
+  const logout = (token)=>{
         axios.interceptors.request.use(function (config){
             const token = data.data.token
             console.log(token)
@@ -33,9 +45,6 @@ const StudentDashboard = () => {
         })
         axios.post('http://localhost:8000/api/logout',data)
     }
-
-    
-
     return (
         <html lang="en">
             <head>
@@ -47,13 +56,9 @@ const StudentDashboard = () => {
                 <title>Student Dashboard</title>
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
-
-
             </head>
             <body className="sb-nav-fixed">
                 <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-
-
 
                     <img style={{ width: "200px", padding: "10px" }} src="images/logo.png" alt="" />
 
@@ -66,14 +71,19 @@ const StudentDashboard = () => {
                         </div>
                     </form>
 
+
+                   
+
                     <button type="button"class="btn btn-warning ">Hii, {data.data.user.name}</button>
+
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
+
                             <li className='text-center hey'><a type="button" class="btn btn-warning" onClick={()=>logout(data.data.token)}>Logout</a></li>
-                                
+
                             </ul>
                         </li>
                     </ul>
@@ -88,7 +98,6 @@ const StudentDashboard = () => {
                                         <div className="sb-nav-link-icon  "><i className="fas fa-tachometer-alt navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Student Dashboard</h6>
                                     </Link>
-
                                     <Link className="nav-link" to="#">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-hourglass-start navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Time Table</h6>
@@ -96,6 +105,10 @@ const StudentDashboard = () => {
                                     <Link className="nav-link" to="/assessment">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-columns navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Assessments</h6>
+                                    </Link>
+                                    <Link className="nav-link" to="/result">
+                                        <div className="sb-nav-link-icon  "><i className="fas fa-graduation-cap navbar-logo"></i></div>
+                                        <h6 className="pt-2 " style={{ color: "white" }}>Grade</h6>
                                     </Link>
                                     <Link className="nav-link" to="#">
                                         <div className="sb-nav-link-icon  "><i className="fab fa-accusoft navbar-logo"></i></div>
@@ -109,31 +122,26 @@ const StudentDashboard = () => {
                                         <div className="sb-nav-link-icon  "><i className="fas fa-bookmark navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Material</h6>
                                     </Link>
-                                    <Link className="nav-link" to="#">
+                                    {/* <Link className="nav-link" to="#">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-graduation-cap navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Grade</h6>
-                                    </Link>
+                                    </Link> */}
                                     <Link className="nav-link" to="#">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Attendence</h6>
                                     </Link>
                                 </div>
                             </div>
-
                         </nav>
                     </div>
                     <div id="layoutSidenav_content">
                         <main>
-
                             <div className="card-header d-flex justify-content-between" >
                                 <div>
-
                                     <i className="fas fa-tachometer-alt p-1"></i>
                                     Student Dashboard
                                 </div>
-
                             </div>
-
                             <div className=' container d-flex justify-content-evenly  ' >
                                 <div className='col-md-7 '>
                                     <div class="shadow margin-auto" style={{ maxWidth: "772px" }}>
@@ -150,7 +158,6 @@ const StudentDashboard = () => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div className='col-md-4 d-flex justify-content-around shadow p-2' style={{ height: "100px" }}>
                                     <div className='col-md-3 text-center'>
@@ -205,8 +212,6 @@ const StudentDashboard = () => {
                                             <div class="progress-bar" role="progressbar" style={{ width: "60%" }} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -222,23 +227,19 @@ const StudentDashboard = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {subjects.map(subject => <tr>
+                                     {course ? (subjects.filter(subject => subject.course_id == course )).map((subject) => { return <tr> <td>{sn++}</td><td>{subject.sname}</td><td>{subject.subject_code}</td></tr> }) : subjects.map((subject) => { return <tr> <td>{subject.id}</td><td>{subject.sname}</td><td>{subject.subject_code}</td></tr> })}
+                                        {/* {subjects.map(subject => <tr>
                                             <td>{subject.id}</td>
 
                                             <td>{subject.sname}</td>
                                             <td>{subject.subject_code}</td>
-                                            
+
                                         </tr>)
-                                        }
+                                        } */}
                                     </tbody>
                                 </table>
 
                             </div>
-
-
-
-
-
                         </main>
                         <footer className="py-4 bg-light mt-auto">
                             <div className="container-fluid px-4">

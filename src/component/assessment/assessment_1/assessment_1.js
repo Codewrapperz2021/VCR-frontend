@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import questionservices from '../../../services/questionservices'
 import studentassessmentservices from '../../../services/studentassessment';
+import swal from 'sweetalert';
 import CountDownTimer from './countdowntimer'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 export default function Assessment_1() {
+    const navigate = useNavigate();
 
-    const hoursMinSecs = { minutes: 20, seconds: 0 }
+    const hoursMinSecs = { minutes: 0, seconds: 10 }
     const [formdata, setFormdata] = useState({
-        option: ""
+        option: "",
+
     })
+    console.log(hoursMinSecs)
+  
+
     const data = useSelector(state => state.UserData)
     const [answer, setAnswer] = useState([]);
     const [questions, setQuestion] = useState([]);
@@ -17,12 +24,21 @@ export default function Assessment_1() {
     const s_id = data.user.id;
     const [count, setCount] = useState(1);
 
+
+    const autosubmit=()=>{
+        if( hoursMinSecs.seconds==0){
+            submitHandler() 
+    }}
+
     const submitHandler = (e) => {
         e.preventDefault();
-        StoreResult(); 
-       
-        // const data = { student_answer: formdata, q_id: questions[id]?.id};
+        StoreResult();
         studentassessmentservices.addstudentassesment(multidata);
+        navigate('/feedback')
+        swal("Your result successfully submit!", "Please submit Your Feedback!", "success", {
+            buttons: false,
+            timer: 2000,
+        });
         console.log("result",multidata)
     }
 
@@ -37,19 +53,24 @@ export default function Assessment_1() {
     const StoreResult = () => {
         const data = { student_answer: formdata.option, q_id: questions[id]?.id, s_id: s_id };
         multidata.push(data)
-        console.log(multidata)
+        // console.log(multidata)
     }
+
 
     const saveAndNext = () => {
         setId(id + 1);
-        setCount(count=>count+1)
+        setCount(count => count + 1)
         StoreResult();
+        autosubmit();
+
 
     }
     const saveAndPrev = () => {
         setId(id - 1);
-        setCount(count=>count-1)
+        setCount(count => count - 1)
         StoreResult();
+    }
+    const handleClick = e => {
     }
 
     const handlechange = e => {
@@ -82,49 +103,52 @@ export default function Assessment_1() {
                         </ul>
                     </div>
                 </div>
-                <form className="row" onSubmit={(e) => { submitHandler(e) }}>
-                    <div className="col-md-5 text-center d-flex flex-column hey">
-                        <div className="border bg-light-white">
-                            <span className="">Question:{id + 1}</span>
-                        </div>
-                        <div className="border bg-light-white">
-                            <p>{questions[id]?.question}</p>
-                            <hr />
-                        </div>
-                        <div className="mt-4 ">
-                            <div className="btn btn-dark float-start 0" style={{ visibility: id === 0 ? 'hidden' : "visible" }} onClick={() => saveAndPrev()}>Previous</div>
-                            <div className="btn btn-dark float-end" style={{ visibility: id === questions.length - 1 ? 'hidden' : "visible", }} onClick={() => saveAndNext()}>Next </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4  d-flex flex-column hey">
-                        <div className="border text-center bg-light-white">
-                            <span className="">Options</span>
-                        </div>
-                        <div>
-                            <div className="border bg-light-white">
-                                <input type="radio" name="option" value={questions[id]?.ans1} checked={formdata.option == questions[id]?.ans1} id="1" onChange={handlechange} />
-                                <span >{questions[id]?.ans1}</span>
+                <div className='row d-flex'>
+                    <div className='col-md-9 '>
+                        <form className='row' onSubmit={(e) => { submitHandler(e) }}>
+                            <div className="col-md-6 text-center d-flex flex-column hey">
+                                <div className="border bg-light-white">
+                                    <span className="">Question:{id + 1}</span>
+                                </div>
+                                <div className="border bg-light-white">
+                                    <p>{questions[id]?.question}</p>
+                                    <hr />
+                                </div>
+                                <div className="mt-4 ">
+                                    {/* {/ <div className="btn btn-dark float-start 0" style={{ visibility: id === 0 ? 'hidden' : "visible" }} onClick={() => saveAndPrev()}>Previous</div> /} */}
+                                    <div className="btn btn-dark float-end" style={{ visibility: id === questions.length - 1 ? 'hidden' : "visible", }} onClick={() => saveAndNext()}>Next </div>
+                                </div>
                             </div>
-                            <div className="border bg-light-white">
-                                <input type="radio" name="option" value={questions[id]?.ans2} checked={formdata.option == questions[id]?.ans2} id="2" onChange={handlechange} />
-                                <span>{questions[id]?.ans2}</span>
-                            </div>
-                            <div className="border bg-light-white">
-                                <input type="radio" name="option" value={questions[id]?.ans3} checked={formdata.option == questions[id]?.ans3} id="3" onChange={handlechange} />
-                                <span>{questions[id]?.ans3}</span>
-                            </div>
-                            <div className="border bg-light-white">
-                                <input type="radio" name="option" value={questions[id]?.ans4} checked={formdata.option == questions[id]?.ans4} id="4" onChange={handlechange} />
-                                <span>{questions[id]?.ans4}</span>
-                            </div>
-                        </div>
-                        <div className=" text-center ">
-                            <input className="btn btn-dark" type="submit" style={{ visibility: id === questions.length - 1 ? 'visible' : "hidden", }} />
-                        </div>
+                            <div className="col-md-6  d-flex flex-column hey">
+                                <div className="border text-center bg-light-white">
+                                    <span className="">Options</span>
+                                </div>
+                                <div>
+                                    <div className="border bg-light-white">
+                                        <input type="radio" name="option" value={questions[id]?.ans1} checked={formdata.option == questions[id]?.ans1} id="1" onChange={handlechange} />
+                                        <span >{questions[id]?.ans1}</span>
+                                    </div>
+                                    <div className="border bg-light-white">
+                                        <input type="radio" name="option" value={questions[id]?.ans2} checked={formdata.option == questions[id]?.ans2} id="2" onChange={handlechange} />
+                                        <span>{questions[id]?.ans2}</span>
+                                    </div>
+                                    <div className="border bg-light-white">
+                                        <input type="radio" name="option" value={questions[id]?.ans3} checked={formdata.option == questions[id]?.ans3} id="3" onChange={handlechange} />
+                                        <span>{questions[id]?.ans3}</span>
+                                    </div>
+                                    <div className="border bg-light-white">
+                                        <input type="radio" name="option" value={questions[id]?.ans4} checked={formdata.option == questions[id]?.ans4} id="4" onChange={handlechange} />
+                                        <span>{questions[id]?.ans4}</span>
+                                    </div>
+                                </div>
+                                <div className=" text-center ">
+                                    <input className="btn btn-dark" type="submit" style={{ visibility: id === questions.length - 1 ? 'visible' : "hidden", }} />
+                                </div>
 
+                            </div>
+                        </form>
                     </div>
-                    <div className="col-md-3 ">
-
+                    <div className='col-md-3'>
                         <div class="accordion accordion-flush border mar-top" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -135,7 +159,7 @@ export default function Assessment_1() {
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body d-flex  justify-content-around">
                                         {questions.map(id => (
-                                            <div className="col-md-2 border p-2 text-center rounded-3">{id.id}</div>
+                                            <button className="col-md-1 border p-1 text-center rounded-3 " onClick={() => handleClick(setId(id.id - 1))}>{id.id}</button>
 
                                         ))}
                                         <div>
@@ -167,10 +191,11 @@ export default function Assessment_1() {
                                 </h2>
                             </div>
                         </div>
-
                     </div>
+                </div>
 
-                </form>
+
+
 
                 <div className="bg-light-white fixed-bottom">
                     <div className="row border d-flex align-center ">
