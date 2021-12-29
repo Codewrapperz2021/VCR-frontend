@@ -8,18 +8,21 @@ import store from '../../store';
 import axios from 'axios'
 const AdminDashboard = () => {
     const data = useSelector(state => state.UserData)
-    console.log(data.token)
 const logout = (token)=>{
-    const data = {
-        headers: {Accept:'application/json','Content-Type':'application/x-www-form-urlencoded',Authorization: `Bearer ${token}` }
-      
-    }
+    axios.interceptors.request.use(function (config){
+        const token = data.data.token
+        console.log(token)
+        config.headers.Authorization = token ? `Bearer ${token}` : '';
+        return config;
+    })
+   
     axios.post('http://localhost:8000/api/logout',data)
 }
      return (
 
         <html lang="en">
             <head>
+                {console.log(data.data.token)}
                 <meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -44,13 +47,13 @@ const logout = (token)=>{
 
                         </div>
                     </form>
-                    <button type="button"class="btn btn-warning ">{data.user.name}</button>
+                    <button type="button"class="btn btn-warning ">{data.data.user.name}</button>
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img className='profile' src={`http://localhost:8000/images/${data.user.profileimage}`}/></a>
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img className='profile' src={`http://localhost:8000/images/${data.data.user.profileimage}`}/></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <li><a className="dropdown-item" onClick={()=>logout(data.token)}>Logout</a></li>
+                                <li><a className="dropdown-item" onClick={()=>logout(data.data.token)}>Logout</a></li>
                             </ul>
                         </li>
                     </ul>

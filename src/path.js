@@ -50,12 +50,7 @@ import Result from './component/assessment/assessment_1/result';
 import { useSelector } from 'react-redux';
 
 
-    // axios.interceptors.request.use(function (config){
-    //     const data = useSelector(state => state.UserData)
-    //     const token = data.token
-    //     config.headers.Authorization = token ? `Bearer ${token}` : '';
-    //     return config;
-    // })
+  
 
 
 export default function Path() {
@@ -72,7 +67,7 @@ export default function Path() {
                     <Route path="/teacherdashboard" element={<TeacherDashboard />} />
 
                     <Route path="/forget-password" element={<Forget />} />
-                    <Route path="/reset-password" element={<Resetpassword />} />
+                    <Route path="/reset-password/" element={<Resetpassword />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/register" element={<Register />} />
 

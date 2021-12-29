@@ -3,10 +3,20 @@ import '../../App.css';
 import '../script';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios'
 
 
 const TeacherDashboard = () => {
     const data = useSelector(state => state.UserData)
+    const logout = (token)=>{
+        axios.interceptors.request.use(function (config){
+            const token = data.data.token
+            console.log(token)
+            config.headers.Authorization = token ? `Bearer ${token}` : '';
+            return config;
+        })
+        axios.post('http://localhost:8000/api/logout',data)
+    }
 
     return (
         <html lang="en">
@@ -35,13 +45,14 @@ const TeacherDashboard = () => {
 
                         </div>
                     </form>
-                    <button type="button" class="btn btn-warning ">Hii, {data.user.name}</button>
+                    <button type="button" class="btn btn-warning ">Hii, {data.data.user.name}</button>
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <li><a className="dropdown-item" href='/'>Logout</a></li>
+                                <li className='text-center hey'><a type="button" class="btn btn-warning" onClick={()=>logout(data.data.token)}>Logout</a></li>
+
                             </ul>
                         </li>
                     </ul>
