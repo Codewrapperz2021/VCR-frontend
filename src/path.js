@@ -46,6 +46,7 @@ import Updatequestion from './component/question/updatequestion';
 
 import Assessment from './component/student/Assessment';
 import Assessment_1 from './component/assessment/assessment_1/assessment_1';
+import Feedback from '../src/component/assessment/assessment_1/feedback'
 import Result from './component/assessment/assessment_1/result';
 import { useSelector } from 'react-redux';
 
@@ -101,6 +102,7 @@ export default function Path() {
 
                     <Route path="/assessment" element={<Assessment />} />
                     <Route path="/assessment-1" element={<Assessment_1 />} />
+                    <Route path="/feedback" element={<Feedback/>}/>
                     <Route path="/result" element={<Result />} />
                 </Routes>
 

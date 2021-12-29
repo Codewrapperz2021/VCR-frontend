@@ -21,7 +21,7 @@ export default function Assessment_1() {
     const [questions, setQuestion] = useState([]);
     const [id, setId] = useState(0);
     const [multidata, setMultidata] = useState([]);
-    const s_id = data.user.id;
+    const s_id = data.data.user.id;
     const [count, setCount] = useState(1);
 
 
@@ -91,7 +91,7 @@ export default function Assessment_1() {
                         <span className=" text-light float-end">Time Left<CountDownTimer hoursMinSecs={hoursMinSecs} /></span>
                     </div>
                     <div className='col-md-5 text-white'>
-                        <span className='float-end'>{data.user.name}</span>
+                        <span className='float-end'>{data.data.user.name}</span>
                     </div>
                 </div>
                 <div className="row border d-flex align-center bg-light-white">
