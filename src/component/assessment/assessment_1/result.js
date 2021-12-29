@@ -17,7 +17,7 @@ export default function Result() {
             .then(res => {
                 const result = res.data;
                 setResults(result);
-                setStudentid(data.user.id)
+                setStudentid(data.data.user.id)
             })
            
     }, [])
@@ -25,7 +25,7 @@ export default function Result() {
         var doc = new jsPDF('p', 'pt', [700,700]);
         doc.html(document.querySelector('#content'), {
           callback: function (pdf) {
-            pdf.save(data.user.name+'_result.pdf')
+            pdf.save(data.data.user.name+'_result.pdf')
           }
         })
     
@@ -38,7 +38,7 @@ export default function Result() {
                     <div class="accordion-item"id='content'>
                         <h2 class="accordion-header" id="flush-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                {data.user.name}
+                                {data.data.user.name}
                             </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
