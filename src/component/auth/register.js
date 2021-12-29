@@ -33,7 +33,7 @@ export default function Register() {
       console.log(res)
     })
   }else{
-    alert('aja')
+    alert('select role')
   }
   }
 

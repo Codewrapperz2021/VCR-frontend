@@ -29,7 +29,8 @@ export default function Login() {
         e.preventDefault();
         const data = { email: email, password: password }
         authservices.login(data).then((res) => {
-            if (res.data.user.email === data.email &&res.data.user.role === 'admin') {
+            console.log(res.data.data.user.email)
+            if (res.data.data.user.email === data.email &&res.data.data.user.role === 'admin') {
                 swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                     buttons: false,
                     timer: 2000,
@@ -39,7 +40,7 @@ export default function Login() {
                 showadminDash()
             }
             else if
-                 (res.data.user.email === data.email && res.data.user.role === 'teacher') {
+                 (res.data.data.user.email === data.email && res.data.data.user.role === 'teacher') {
                     swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                         buttons: false,
                         timer: 2000,
@@ -50,7 +51,7 @@ export default function Login() {
                     showteacherDash()
             }
           else if
-            (res.data.user.email === data.email && res.data.user.role === 'student') {
+            (res.data.data.user.email === data.email &&res.data.data.user.role === 'student') {
                swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                    buttons: false,
                    timer: 2000,
