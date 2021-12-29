@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react'
 import Deletesubject from '../subject/deletesubject';
 import subjectservices from '../../services/subjectservices';
 import { useSelector } from 'react-redux';
+import axios from 'axios'
+
 
 
 
@@ -20,6 +22,17 @@ const StudentDashboard = () => {
                 setSubjects(subject);
             })
     }, [])
+
+
+    const logout = (token)=>{
+        axios.interceptors.request.use(function (config){
+            const token = data.data.token
+            console.log(token)
+            config.headers.Authorization = token ? `Bearer ${token}` : '';
+            return config;
+        })
+        axios.post('http://localhost:8000/api/logout',data)
+    }
 
     
 
@@ -53,13 +66,13 @@ const StudentDashboard = () => {
                         </div>
                     </form>
 
-                    <button type="button"class="btn btn-warning ">Hii, {data.user.name}</button>
+                    <button type="button"class="btn btn-warning ">Hii, {data.data.user.name}</button>
                     <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw text-light"></i></a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                            <li className='text-center hey'><a type="button" class="btn btn-warning" href="/">Logout</a></li>
+                            <li className='text-center hey'><a type="button" class="btn btn-warning" onClick={()=>logout(data.data.token)}>Logout</a></li>
                                 
                             </ul>
                         </li>
@@ -127,7 +140,7 @@ const StudentDashboard = () => {
                                         <div class="row g-0">
                                             <div class="col-md-8">
                                                 <div class="card-body ">
-                                                    <p> Welcome Back, {data.user.name}</p>
+                                                    <p> Welcome Back, {data.data.user.name}</p>
                                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                     <button className='btn btn-primary'>Learn More</button>
                                                 </div>

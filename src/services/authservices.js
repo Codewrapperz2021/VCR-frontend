@@ -8,15 +8,24 @@ class authservices{
         return axios.post('http://localhost:8000/api/login',data,token);
     }
 
-    logout(token)
+    logout(data)
     {
-        return axios.post('http://localhost:8000/api/logout',token);
+        return axios.post('http://localhost:8000/api/logout',data);
     }
 
     register(data){
         {
             return axios.post('http://localhost:8000/api/register',data);
         }
+    }
+
+    forgotpassword(data){
+        return axios.post('http://localhost:8000/api/forgot-password',data);
+
+    }
+    resetpassword(data){
+        return axios.post('http://localhost:8000/api/reset-password',data);
+
     }
    
 }
