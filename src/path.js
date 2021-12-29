@@ -17,6 +17,7 @@ import Register from './component/auth/register';
 
 import Addtimetable from './component/timetablemanagement/addtimetable';
 import Viewtimetable from './component/timetablemanagement/viewtimetable';
+import Test from './component/timetablemanagement/test';
 
 import Addlecture from './component/lecture/addlecture';
 import Viewlecture from './component/lecture/viewlecture';
@@ -45,6 +46,7 @@ import Updatequestion from './component/question/updatequestion';
 
 import Assessment from './component/student/Assessment';
 import Assessment_1 from './component/assessment/assessment_1/assessment_1';
+import Result from './component/assessment/assessment_1/result';
 import { useSelector } from 'react-redux';
 
 
@@ -76,6 +78,7 @@ export default function Path() {
 
                     <Route path="/addtimetable" element={<Addtimetable />} />
                     <Route path="/viewtimetable" element={<Viewtimetable />} />
+                    <Route path="/test" element={<Test />} />
 
                     <Route path="/addlecture" element={<Addlecture />} />
                     <Route path="/viewlecture" element={<Viewlecture />} />
@@ -103,6 +106,7 @@ export default function Path() {
 
                     <Route path="/assessment" element={<Assessment />} />
                     <Route path="/assessment-1" element={<Assessment_1 />} />
+                    <Route path="/result" element={<Result />} />
                 </Routes>
 
             </Router>
