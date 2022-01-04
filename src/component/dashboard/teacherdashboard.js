@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../App.css';
 import '../script';
+import swal from 'sweetalert';
+import authservices from '../../services/authservices';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios'
@@ -15,8 +17,15 @@ const TeacherDashboard = () => {
             config.headers.Authorization = token ? `Bearer ${token}` : '';
             return config;
         })
-        axios.post('http://localhost:8000/api/logout',data)
-    }
+        authservices.logout(data).then((res) => {
+            window.location.href = "/";
+            swal("Logged Out!", "Login to access Dashboard!", "success", {
+                buttons: false,
+                timer: 2000,
+        
+              });
+    
+        });    }
 
     return (
         <html lang="en">
