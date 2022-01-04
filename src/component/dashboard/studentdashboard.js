@@ -1,6 +1,8 @@
 import '../../App.css';
 import '../script';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
+import authservices from '../../services/authservices';
 import React, { useState, useEffect } from 'react'
 import subjectservices from '../../services/subjectservices';
 import studentservices from '../../services/studentservices';
@@ -38,8 +40,15 @@ const StudentDashboard = () => {
             config.headers.Authorization = token ? `Bearer ${token}` : '';
             return config;
         })
-        axios.post('http://localhost:8000/api/logout',data)
-    }
+        authservices.logout(data).then((res) => {
+            window.location.href = "/";
+            swal("Logged Out!", "Login to access Dashboard!", "success", {
+                buttons: false,
+                timer: 2000,
+        
+              });
+    
+        });    }
     return (
         <html lang="en">
             <head>

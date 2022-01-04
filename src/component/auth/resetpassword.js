@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 
 import authservices from '../../services/authservices';
 import {useParams} from 'react-router-dom';
+import swal from 'sweetalert';
+
 
 export default function Resetpassword() {
   const [token,setToken] = useState('');
@@ -17,6 +19,13 @@ export default function Resetpassword() {
     e.preventDefault();
   const data = {email: email,token:token,password: password, password_confirmation:password_confirmation}
   authservices.resetpassword(data).then((res) => {
+   
+    swal("Password has been changed successfuly!", "Login to access the dashboard!", "success", {
+      buttons: false,
+      timer: 6000,
+
+    });
+    window.location.href = "/";
     console.log(res)
   });
   }

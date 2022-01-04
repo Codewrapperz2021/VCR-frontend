@@ -19,6 +19,12 @@ class authservices{
         }
     }
 
+    googlelogin(data){
+        {
+            return axios.post('http://localhost:8000/api/googlelogin',data);
+        }
+    }
+
     forgotpassword(data){
         return axios.post('http://localhost:8000/api/forgot-password',data);
 
