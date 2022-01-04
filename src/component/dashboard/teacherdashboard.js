@@ -76,7 +76,7 @@ const TeacherDashboard = () => {
                                         <h6 className="pt-2 " style={{ color: "white" }}>Teacher Dashboard</h6>
                                     </Link>
 
-                                    <Link className="nav-link" to="/timetable">
+                                    <Link className="nav-link" to="">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-columns navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Time Table</h6>
                                     </Link>

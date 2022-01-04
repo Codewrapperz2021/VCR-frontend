@@ -17,7 +17,7 @@ import Register from './component/auth/register';
 
 import Addtimetable from './component/timetablemanagement/addtimetable';
 import Viewtimetable from './component/timetablemanagement/viewtimetable';
-import Test from './component/timetablemanagement/test';
+import Student_time from './component/timetablemanagement/student_time';
 
 import Addlecture from './component/lecture/addlecture';
 import Viewlecture from './component/lecture/viewlecture';
@@ -74,7 +74,7 @@ export default function Path() {
 
                     <Route path="/addtimetable" element={<Addtimetable />} />
                     <Route path="/viewtimetable" element={<Viewtimetable />} />
-                    <Route path="/test" element={<Test />} />
+                    <Route path="/student_time" element={<Student_time />} />
 
                     <Route path="/addlecture" element={<Addlecture />} />
                     <Route path="/viewlecture" element={<Viewlecture />} />

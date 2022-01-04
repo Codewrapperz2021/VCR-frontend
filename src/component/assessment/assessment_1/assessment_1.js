@@ -15,9 +15,7 @@ export default function Assessment_1() {
     })
     console.log(hoursMinSecs)
   
-
     const data = useSelector(state => state.UserData)
-    const [answer, setAnswer] = useState([]);
     const [questions, setQuestion] = useState([]);
     const [id, setId] = useState(0);
     const [multidata, setMultidata] = useState([]);
@@ -53,7 +51,6 @@ export default function Assessment_1() {
     const StoreResult = () => {
         const data = { student_answer: formdata.option, q_id: questions[id]?.id, s_id: s_id };
         multidata.push(data)
-        // console.log(multidata)
     }
 
 

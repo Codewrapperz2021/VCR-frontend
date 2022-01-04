@@ -10,13 +10,9 @@ import { useSelector } from 'react-redux';
 import axios from 'axios'
 
 
-
-
-
 const StudentDashboard = () => {
 
     const [subjects, setSubjects] = useState([]);
-    const [student, setStudent] = useState([]);
     const [course, setCourse] = useState();
     const data = useSelector(state => state.UserData)
     let sn=1;
@@ -28,15 +24,14 @@ const StudentDashboard = () => {
             })
             studentservices.viewstudent()
             .then(res=>{
-                const students = res.data;
-                setStudent(students)
-            })  
-            for(let i=0; i<student.length;i++){
-                if(student[i].email==data.data.user?.email){
-                 setCourse(student[i]?.course_id)
-                }
-             }
-             console.log(data.data.user?.email) 
+                for(let i=0; i<res.data.length;i++){ 
+                  if(res.data[i].email==data.data.user?.email){
+                    console.log(res.data[i].email)
+                      setCourse(res.data[i]?.course_id)
+                     
+                  }  
+                 }       
+             })  
     }, [])
   const logout = (token)=>{
         axios.interceptors.request.use(function (config){
@@ -105,7 +100,7 @@ const StudentDashboard = () => {
                                         <div className="sb-nav-link-icon  "><i className="fas fa-tachometer-alt navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Student Dashboard</h6>
                                     </Link>
-                                    <Link className="nav-link" to="#">
+                                    <Link className="nav-link" to="/student_time">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-hourglass-start navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Time Table</h6>
                                     </Link>
@@ -129,10 +124,6 @@ const StudentDashboard = () => {
                                         <div className="sb-nav-link-icon  "><i className="fas fa-bookmark navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Material</h6>
                                     </Link>
-                                    {/* <Link className="nav-link" to="#">
-                                        <div className="sb-nav-link-icon  "><i className="fas fa-graduation-cap navbar-logo"></i></div>
-                                        <h6 className="pt-2 " style={{ color: "white" }}>Grade</h6>
-                                    </Link> */}
                                     <Link className="nav-link" to="#">
                                         <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
                                         <h6 className="pt-2 " style={{ color: "white" }}>Attendence</h6>
@@ -234,15 +225,7 @@ const StudentDashboard = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {course ? (subjects.filter(subject => subject.course_id == course )).map((subject) => { return <tr> <td>{sn++}</td><td>{subject.sname}</td><td>{subject.subject_code}</td></tr> }) : subjects.map((subject) => { return <tr> <td>{subject.id}</td><td>{subject.sname}</td><td>{subject.subject_code}</td></tr> })}
-                                        {/* {subjects.map(subject => <tr>
-                                            <td>{subject.id}</td>
-
-                                            <td>{subject.sname}</td>
-                                            <td>{subject.subject_code}</td>
-
-                                        </tr>)
-                                        } */}
+                                    {course ? (subjects.filter(subject => subject.course_id == course )).map((subject) => { return <tr> <td>{sn++}</td><td>{subject.sname}</td><td>{subject.subject_code}</td></tr> }) :''}
                                     </tbody>
                                 </table>
 
