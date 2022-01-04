@@ -53,7 +53,7 @@ export default function Student_time() {
       <h2 class="text-center " name="course">{course} Timetable</h2>
     <table class="table table-bordered">
       <thead>
-      <tr class="table-info">
+      <tr class="table-info text-center">
       <th>TIME/DAY</th>
       {days.map(day=>  
          <th class="text-uppercase">{day.day_name}</th> 
@@ -63,8 +63,8 @@ export default function Student_time() {
       <tbody>
           {time.map(time=>
           <tr>
-              <td className='align-center'>{time.lect_time+'-' +(parseInt(time.lect_time)+1)+":00"}</td>
-            {selectcourseID ?(timetable.filter(timetable =>timetable.course_name==selectcourseID && timetable.time_id == time.id)).map((tym) => { return (<td class="align-center "><button className="timebtn">{tym.sname}</button><br></br><button className="timebtntec">{tym.first_name}</button></td>) }):''} 
+              <td className="text-center">{time.lect_time+'-' +(parseInt(time.lect_time)+1)+":00"}</td>
+            {selectcourseID ?(timetable.filter(timetable =>timetable.course_name==selectcourseID && timetable.time_id == time.id)).map((tym) => { return (<td className="text-center"><button className="timebtn">{tym.sname}</button><br></br><button className="timebtntec">{tym.first_name}</button></td>) }):''} 
               </tr>
               )}
       </tbody>

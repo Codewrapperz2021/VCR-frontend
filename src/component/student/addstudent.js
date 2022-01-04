@@ -11,7 +11,7 @@ export default function Addstudent() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,collage:formValues.cellage }
+    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,college:formValues.college }
     for(let i=0;i<courses.length;i++)
     {
            if(courses[i].cname===data.course_id)
@@ -53,7 +53,6 @@ export default function Addstudent() {
     let lname = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let phone = /^([0-9]){10}$/;
     let email = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-    let college = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let roll = /^([0-9]){10}$/;
     if (!values.firstName) {
       errors.firstName = "first name is required*";
@@ -86,9 +85,7 @@ export default function Addstudent() {
     }
     if (!values.college) {
       errors.college = "college is required*";
-    } else if (!college.test(values.college)) {
-      errors.college = "please enter valid college";
-    }
+    } 
     return errors
   }
   return (
