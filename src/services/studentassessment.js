@@ -1,6 +1,6 @@
 import axios from 'axios';
 const STUDENTASSESSMENTSERVICES_BASE_URL='http://localhost:8000/api/student-assessment/';
-
+const FEEDBACKSERVICES_BASE_URL='http://localhost:8000/api/student-feedback/';
 class studentassessmentservices{
     viewstudentassesment()
     {
@@ -25,6 +25,10 @@ class studentassessmentservices{
     addstudentassesment(studentassesment)
     {
         return axios.post(STUDENTASSESSMENTSERVICES_BASE_URL,studentassesment);
+    }
+    addfeedback(feedback)
+    {
+        return axios.post(FEEDBACKSERVICES_BASE_URL,feedback);
     }
 }
 
