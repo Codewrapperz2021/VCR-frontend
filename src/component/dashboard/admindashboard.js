@@ -1,12 +1,13 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import authservices from '../../services/authservices';
 import '../../App.css';
 import '../script';
+import swal from 'sweetalert';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import store from '../../store';
 import axios from 'axios'
 const AdminDashboard = () => {
+
     const data = useSelector(state => state.UserData)
 const logout = (token)=>{
     axios.interceptors.request.use(function (config){
@@ -16,7 +17,15 @@ const logout = (token)=>{
         return config;
     })
    
-    axios.post('http://localhost:8000/api/logout',data)
+    authservices.logout(data).then((res) => {
+        window.location.href = "/";
+        swal("Logged Out!", "Login to access Dashboard!", "success", {
+            buttons: false,
+            timer: 2000,
+    
+          });
+
+    });
 }
      return (
 
