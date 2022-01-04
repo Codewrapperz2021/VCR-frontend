@@ -3,7 +3,7 @@ import courseservices from '../../services/courseservices';
 import React, { useState, useEffect } from 'react';
 import '../../form.css'
 export default function Addstudent() {
-  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:"",roll:"",collage:""};
+  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:"",roll:"",college:""};
   const [formValues, setformValues] = useState(initialValues);
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -11,7 +11,7 @@ export default function Addstudent() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,collage:formValues.collage }
+    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,collage:formValues.cellage }
     for(let i=0;i<courses.length;i++)
     {
            if(courses[i].cname===data.course_id)
@@ -53,7 +53,7 @@ export default function Addstudent() {
     let lname = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let phone = /^([0-9]){10}$/;
     let email = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-    let collage = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
+    let college = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let roll = /^([0-9]){10}$/;
     if (!values.firstName) {
       errors.firstName = "first name is required*";
@@ -84,10 +84,10 @@ export default function Addstudent() {
     } else if (!roll.test(values.roll)) {
       errors.roll = "please enter valid roll number";
     }
-    if (!values.collage) {
-      errors.collage = "collage is required*";
-    } else if (!collage.test(values.collage)) {
-      errors.collage = "please enter valid collage";
+    if (!values.college) {
+      errors.college = "college is required*";
+    } else if (!college.test(values.college)) {
+      errors.college = "please enter valid college";
     }
     return errors
   }
@@ -136,10 +136,10 @@ export default function Addstudent() {
             </div>
             <p style={{ color: "red" }}>{formErrors.roll}</p>
             <div>
-              <label for=""><b>collage*</b></label>
-              <input id="collage" type="text" name="collage" placeholder="Enter your collage" value={formValues.collage} onChange={handleChange} />
+              <label for=""><b>college*</b></label>
+              <input id="college" type="text" name="college" placeholder="Enter your college" value={formValues.college} onChange={handleChange} />
             </div>
-            <p style={{ color: "red" }}>{formErrors.collage}</p>
+            <p style={{ color: "red" }}>{formErrors.college}</p>
             <button id="button" class="addbtn">Submit</button>
           </div>
         </div>

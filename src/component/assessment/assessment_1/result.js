@@ -145,7 +145,7 @@ export default function Result() {
                 <div className='d-flex'><h6 className='text-uppercase'>roll : </h6><p className='pro text-uppercase'> {student.roll} </p></div>
                 <div className='d-flex'><h6 className='text-uppercase'>email : </h6><p className='pro text-uppercase'> {student.email} </p></div>
                 <div className='d-flex'><h6 className='text-uppercase'>mob no : </h6><p className='pro '> {student.phone}  </p></div>
-                <div className='d-flex'><h6 className='text-uppercase'>collage : </h6><p className='pro text-uppercase'> {student.collage} </p></div>
+                <div className='d-flex'><h6 className='text-uppercase'>college : </h6><p className='pro text-uppercase'> {student.college} </p></div>
                 <div className='d-flex'><h6 className='text-uppercase'>address : </h6><p className='pro text-uppercase'> {student.address} </p></div>
             </div>
              <div className='col-md-2 '>
