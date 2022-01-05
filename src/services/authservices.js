@@ -33,6 +33,13 @@ class authservices{
         return axios.post('http://localhost:8000/api/reset-password',data);
 
     }
+    changepassword(data){
+        return axios.post('http://localhost:8000/api/profile/change-password',data);
+
+    }
+    changeprofile(data){
+        return axios.post('http://localhost:8000/api/profile/profileimage-update',data);
+    }
    
 }
 

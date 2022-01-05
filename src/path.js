@@ -8,8 +8,22 @@ import StudentDashboard from './component/dashboard/studentdashboard';
 import TeacherDashboard from './component/dashboard/teacherdashboard';
 
 
+import Studentsidebar from './component/masterdas/studentsidebar';
+import Footer from './component/masterdas/footer';
+
+
+
+import Teachersidebar from './component/masterdas/teachersidebar';
+
+
+import Navbar from './component/masterdas/navbar';
+import Adminsidebar from './component/masterdas/adminsidebar';
+
+
 import Forget from './component/auth/forgetpassword';
 import Resetpassword from './component/auth/resetpassword';
+import Changepassword from './component/auth/changepassword';
+import Editprofile from './component/auth/editprofile';
 import Login from './component/auth/login';
 import Logout from './component/auth/logout';
 import Register from './component/auth/register';
@@ -50,6 +64,10 @@ import Feedback from '../src/component/assessment/assessment_1/feedback'
 import Result from './component/assessment/assessment_1/result';
 import { useSelector } from 'react-redux';
 
+import Addmaterial from './component/material/addmaterial';
+import Viewmaterial from './component/material/viewmaterialteacher';
+import Viewmaterialstudent from './component/material/viewmaterialstudent';
+import Deletematerial from './component/material/deletematerial';
 
   
 
@@ -67,8 +85,20 @@ export default function Path() {
                     <Route path="/studentdashboard" element={<StudentDashboard />} />
                     <Route path="/teacherdashboard" element={<TeacherDashboard />} />
 
+                    
+                    <Route path="/sidebar" element={<Studentsidebar />} />
+                    <Route path="/footer" element={<Footer/>} />
+
+                    
+                    <Route path="/sidebar" element={<Teachersidebar />} />
+
+                    <Route path="/navbar" element={<Navbar />} />
+                    <Route path="/sidebar" element={<Adminsidebar />} />
+
                     <Route path="/forget-password" element={<Forget />} />
                     <Route path="/reset-password/" element={<Resetpassword />} />
+                    <Route path="/change-password/" element={<Changepassword />} />
+                    <Route path="/change-profile/" element={<Editprofile />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/register" element={<Register />} />
 
@@ -104,6 +134,11 @@ export default function Path() {
                     <Route path="/assessment-1" element={<Assessment_1 />} />
                     <Route path="/feedback" element={<Feedback/>}/>
                     <Route path="/result" element={<Result />} />
+
+                    <Route path="/addmaterial" element={<Addmaterial/>} />
+                    <Route path="/viewmaterial" element={<Viewmaterial/>} />
+                    <Route path="/viewmaterialstudent" element={<Viewmaterialstudent/>} />
+                    <Route path="/deletematerial" element={<Deletematerial/>} />
                 </Routes>
 
             </Router>
