@@ -48,7 +48,7 @@ export default function Login() {
       const RegisterByGoogle = () => {
           const data={name:name,email:gemail,provider_id:googleId,profileimage:imageUrl}
           authservices.googlelogin(data).then((res) => {
-              console.log(res)
+            //   console.log(res)
 
           })
 
@@ -63,7 +63,7 @@ export default function Login() {
         e.preventDefault();
         const data = { email: email, password: password }
         authservices.login(data).then((res) => {
-            console.log(res.data.data.user.email)
+            // console.log(res.data.data.user.email)
             if (res.data.data.user.email === data.email &&res.data.data.user.role === 'admin') {
                 swal("Logged In!", "Welcome to Admin Dashboard!", "success", {
                     buttons: false,

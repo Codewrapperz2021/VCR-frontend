@@ -23,12 +23,12 @@ export default function Timetable() {
     const [selecttimeID, setSelecttimeID] = useState(0)
     const [multidata, setMultidata] = useState([]);
     let navigate = useNavigate();
-//     const [image, setImage] = useState();
+    //     const [image, setImage] = useState();
 
-//    const img = () => setImage(<img style={{ width: "200px", padding: "10px" }} src="images/logo.png" alt="" />);
-function showtimetable() {
-    navigate('/viewtimetable')
-}
+    //    const img = () => setImage(<img style={{ width: "200px", padding: "10px" }} src="images/logo.png" alt="" />);
+    function showtimetable() {
+        navigate('/viewtimetable')
+    }
 
     useEffect(() => {
         lectureservices.viewlecture()
@@ -59,10 +59,10 @@ function showtimetable() {
     }, [])
     function handleSchedule(e) {
         e.preventDefault();
-        timetableservices.addtimetable(multidata) .then(res => {
-            swal("Scheduled","lecture Scheduled successfully","success" ,{
-              buttons: false,
-              timer: 2000,
+        timetableservices.addtimetable(multidata).then(res => {
+            swal("Scheduled", "lecture Scheduled successfully", "success", {
+                buttons: false,
+                timer: 2000,
             });
             showtimetable()
         })
@@ -99,11 +99,11 @@ function showtimetable() {
                             {lectures.map(lecture =>
                                 <tr>
                                     <div className='lect' >
-                                    <tr><td class="bg-light-gray">{lecture.lect_name}</td><td class="bg-light-gray">{lecture.lect_time + '-' + (parseInt(lecture.lect_time) + 1) + ":00"}</td>
-                                        <div class="form-check" onClick={(e) => setSelecttimeID(e.target.value)}>
+                                        <tr><td class="bg-light-gray">{lecture.lect_name}</td><td class="bg-light-gray">{lecture.lect_time + '-' + (parseInt(lecture.lect_time) + 1) + ":00"}</td>
+                                        </tr>
+                                        <div class="form-check checktime" onClick={(e) => setSelecttimeID(e.target.value)}>
                                             <input class="form-check-input" type="checkbox" value={lecture.id} id="flexCheckDefault" />
                                         </div>
-                                    </tr>
                                     </div>
                                     <td>
                                         <select class="lecture" name="subject" onChange={(e) => setSelectsubjectID(e.target.value)} >
@@ -115,7 +115,7 @@ function showtimetable() {
                                             {faculties.map(faculty => { return (<option value={faculty.id}>{faculty.first_name}</option>) })}
                                         </select>
                                         <div class="form-check">
-                                       <input class="form-check-input" type="checkbox" onClick={() => StoreResult()} value="" id="flexCheckDefault" />
+                                            <input class="form-check-input" type="checkbox" onClick={() => StoreResult()} value="" id="flexCheckDefault" />
                                         </div>
                                     </td>
                                     <td>

@@ -122,15 +122,6 @@ body{
         opacity: 0.9;
     
 }
-/* select{
-  width: 13%;
-  padding: 3px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-  border-radius: 7px;
-} */
 #role{
   width: 100%;
   padding: 15px;
@@ -175,5 +166,10 @@ body{
     opacity: 1;
   }
   .lect{
-      margin-top: 10px;
+    margin-top: 12% !important;
+  }
+  .checktime{
+      margin-left: 70%;
+      margin-top: 10% !important;
+      
   }
