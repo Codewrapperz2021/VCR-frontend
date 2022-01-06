@@ -84,10 +84,10 @@ export default function Adminsidebar() {
                         </nav>
                         
                     </div>
-                    <Link className="nav-link" to="/todolist">
+                    {/* <Link className="nav-link" to="/admintodolist">
                         <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
                         <h6 className="pt-2 " style={{ color: "white" }}>My Todo list</h6>
-                    </Link>
+                    </Link> */}
 
                 </div>
             </div>

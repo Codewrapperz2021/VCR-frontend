@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from "react";
 import Navbar from "../masterdas/navbar";
-import Studentsidebar from "../masterdas/studentsidebar";
+import Adminsidebar from "../masterdas/adminsidebar";
 import Footer from "../masterdas/footer";
 
-export default function Todolist() {
+export default function Admintodolist() {
   const [data, setData] = useState([]);
   const [noteslist, setNoteslist] = useState("");
  
@@ -50,7 +50,7 @@ export default function Todolist() {
       <Navbar />
       <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-          <Studentsidebar />
+          <Adminsidebar />
         </div>
         <div id="layoutSidenav_content">
           <main>
@@ -96,9 +96,6 @@ export default function Todolist() {
                   </div>
 
                 </div>
-
-
-
               </div>
 
             </div>
