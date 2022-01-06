@@ -21,7 +21,7 @@ export default function Register() {
     formdata.append('password', password)
     formdata.append('confirm_password', cpassword)
     formdata.append('profileimage', document.getElementById('file').files[0])
-    // const data = { name: name, email: email,role:role, password: password, profileimage:document.getElementById('file').files[0] }
+    
     if (role !== 'select') {
 
       authservices.register(formdata).then((res) => {

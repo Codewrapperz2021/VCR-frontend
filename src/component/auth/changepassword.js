@@ -37,10 +37,10 @@ export default function Changepassword() {
               <h3 className="text-center">Change Password</h3>
               <hr />
               <label for=""><b>Old Password</b></label>
-              <input id="oldpassword" type="text" placeholder="Enter the old password" onChange={(e) => setOldPassword(e.target.value)} />
+              <input id="oldpassword" type="password" placeholder="Enter the old password" onChange={(e) => setOldPassword(e.target.value)} />
               
               <label for=""><b>New Password</b></label>
-              <input id="passowrd" type="text" placeholder="Enter the new password" onChange={(e) => setPassword(e.target.value)} />
+              <input id="passowrd" type="password" placeholder="Enter the new password" onChange={(e) => setPassword(e.target.value)} />
               <label for=""><b>Password</b></label>
 
               <input id="password" type="password" placeholder="Enter the new passowrd again" onChange={(e) => setCPassword(e.target.value)} />

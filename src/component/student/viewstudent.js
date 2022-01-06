@@ -4,13 +4,27 @@ import studentservices from '../../services/studentservices';
 import Navbar from '../masterdas/navbar';
 import Adminsidebar from '../masterdas/adminsidebar';
 import Footer from '../masterdas/footer';
+import axios from 'axios'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 
 export default function Viewstudent() {
+  const data = useSelector(state => state.UserData)
+  const token = (token)=>{
+    axios.interceptors.request.use(function (config){
+        const token = data.data.token
+        console.log(token)
+        config.headers.Authorization = token ? `Bearer ${token}` : '';
+        return config;
+    })
+}
+
   const [persons, setPersons] = useState([]);
   let sno=1;
   useEffect(() => {
+    token();
     studentservices.viewstudent()
       .then(res => {
         const persons = res.data;
