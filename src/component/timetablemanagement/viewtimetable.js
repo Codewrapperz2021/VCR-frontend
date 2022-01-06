@@ -6,6 +6,7 @@ import courseservices from '../../services/courseservices';
 import Navbar from '../masterdas/navbar';
 import Adminsidebar from '../masterdas/adminsidebar';
 import Footer from '../masterdas/footer';
+import { Link } from 'react-router-dom';
 
 
 
@@ -74,6 +75,7 @@ export default function Viewtimetable() {
               </table>
             </div>
           </main>
+          <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
           <Footer />
         </div>
       </div>

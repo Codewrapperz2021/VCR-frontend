@@ -68,7 +68,9 @@ export default function Viewmaterialstudent() {
                                 }) : ''}
                             </tbody>
                         </table>
+                       <center><Link to="/admindashboard">Click to Dashboard</Link></center>
                     </main>
+                    
                     <Footer />
                 </div>
             </div>

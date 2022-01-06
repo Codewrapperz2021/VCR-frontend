@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import facultyservices from '../../services/facultyservices';
 import '../../form.css'
+import { useNavigate } from 'react-router';
+import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 
 export default function Updatefaculty() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -13,7 +17,13 @@ export default function Updatefaculty() {
 
   function handlesubmit() {
     const data = { first_name: firstName, last_name: lastName, email: email, phone: phone, dob: dob }
-    facultyservices.updatefaculty(id, data)
+    facultyservices.updatefaculty(id, data).then(res => {
+      navigate("/viewfaculty")
+      swal("Edited", "details edited successfully", "success", {
+        buttons: false,
+        timer: 2000,
+      });
+    })
   }
   useEffect(() => {
     facultyservices.facultyById(id)
@@ -45,6 +55,7 @@ export default function Updatefaculty() {
             <label for=""><b>Phone</b></label>
             <input id="phone" type="text" placeholder="Enter your phone number" defaultValue={phone} onChange={(e) => setPhone(e.target.value)} />
             <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
+            <center><Link  to="/viewfaculty">Click to go back</Link></center>
           </div>
         </div>
     </form>

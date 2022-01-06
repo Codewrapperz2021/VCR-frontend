@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 export default function Viewcourse() {
   const [courses, setCourses] = useState([]);
+  let sno =1;
   useEffect(() => {
     courseservices.viewcourse()
       .then(res => {
@@ -37,7 +38,7 @@ export default function Viewcourse() {
                 </thead>
                 <tbody>
                   {courses.map(course => <tr>
-                    <td>{course.id}</td>
+                    <td>{sno++}</td>
                     <td>{course.cname}</td>
                     <td><Deletecourse id={course.id} /> &nbsp;
                       <Link to={"/updatecourse/" + course.id}>
