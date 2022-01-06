@@ -100,7 +100,7 @@ export default function Addstudent() {
             <hr />
             <label for=""><b>Select course</b></label>
             <div>
-              <select value={formValues.coursename} onChange={handleChange}>
+              <select name="coursename"value={formValues.coursename} onChange={handleChange}>
                 {courses.map(course =>
                   <option value={course.cname} >{course.cname}</option>
                 )}

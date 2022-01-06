@@ -67,10 +67,9 @@ import Viewmaterialstudent from './component/material/viewmaterialstudent';
 import Deletematerial from './component/material/deletematerial';
 
 
-import Todolist from './component/Todo/todolist';
-
-  
-
+import Admintodolist from './component/Todo/admintodolist';
+import Studenttodolist from './component/Todo/studenttodolist';
+import Teachertodolist from './component/Todo/teachertodolist';
 
 export default function Path() {
     
@@ -140,7 +139,11 @@ export default function Path() {
                     <Route path="/viewmaterial" element={<Viewmaterial/>} />
                     <Route path="/viewmaterialstudent" element={<Viewmaterialstudent/>} />
                     <Route path="/deletematerial" element={<Deletematerial/>} />
-                    <Route path="/todolist" element={<Todolist/>} />
+
+
+                    <Route path="/admintodolist" element={<Admintodolist/>} />
+                    <Route path="/studenttodolist" element={<Studenttodolist/>} />
+                    <Route path="/teachertodolist" element={<Teachertodolist/>} />
 
                 </Routes>
 
