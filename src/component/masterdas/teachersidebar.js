@@ -48,7 +48,7 @@ export default function Teachersidebar() {
                     </a>
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="/result">Show Results</Link>
+                            <Link className="nav-link" to="">Show Results</Link>
                         </nav>
                     </div>
                 </div>
