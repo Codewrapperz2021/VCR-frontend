@@ -3,7 +3,7 @@ import courseservices from '../../services/courseservices';
 import React, { useState, useEffect } from 'react';
 import '../../form.css'
 export default function Addstudent() {
-  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:""};
+  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:"",roll:"",college:""};
   const [formValues, setformValues] = useState(initialValues);
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -11,7 +11,7 @@ export default function Addstudent() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address }
+    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,college:formValues.college }
     for(let i=0;i<courses.length;i++)
     {
            if(courses[i].cname===data.course_id)
@@ -53,6 +53,7 @@ export default function Addstudent() {
     let lname = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let phone = /^([0-9]){10}$/;
     let email = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+    let roll = /^([0-9]){10}$/;
     if (!values.firstName) {
       errors.firstName = "first name is required*";
     } else if (!fname.test(values.firstName)) {
@@ -77,6 +78,14 @@ export default function Addstudent() {
     } else if (!phone.test(values.phone)) {
       errors.phone = "please enter valid phone number";
     }
+    if (!values.roll) {
+      errors.roll = "roll no is required*";
+    } else if (!roll.test(values.roll)) {
+      errors.roll = "please enter valid roll number";
+    }
+    if (!values.college) {
+      errors.college = "college is required*";
+    } 
     return errors
   }
   return (
@@ -118,6 +127,16 @@ export default function Addstudent() {
               <input id="phone" type="text" name="phone" placeholder="Enter your phone number" value={formValues.phone} onChange={handleChange} />
             </div>
             <p style={{ color: "red" }}>{formErrors.phone}</p>
+            <div>
+              <label for=""><b>Roll no*</b></label>
+              <input id="roll" type="text" name="roll" placeholder="Enter your roll number" value={formValues.roll} onChange={handleChange} />
+            </div>
+            <p style={{ color: "red" }}>{formErrors.roll}</p>
+            <div>
+              <label for=""><b>college*</b></label>
+              <input id="college" type="text" name="college" placeholder="Enter your college" value={formValues.college} onChange={handleChange} />
+            </div>
+            <p style={{ color: "red" }}>{formErrors.college}</p>
             <button id="button" class="addbtn">Submit</button>
           </div>
         </div>

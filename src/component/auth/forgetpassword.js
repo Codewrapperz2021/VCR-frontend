@@ -10,6 +10,12 @@ export default function Forget() {
     e.preventDefault();
     const data ={email:email}
     authservices.forgotpassword(data).then((res) => {
+      swal("Reset link has been sent to your registered Email Address!", "Please click the link to reset the password!", "success", {
+        buttons: false,
+        timer: 6000,
+
+      });
+
       console.log(res)
     });
   }

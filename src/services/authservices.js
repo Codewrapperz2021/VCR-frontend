@@ -19,6 +19,12 @@ class authservices{
         }
     }
 
+    googlelogin(data){
+        {
+            return axios.post('http://localhost:8000/api/googlelogin',data);
+        }
+    }
+
     forgotpassword(data){
         return axios.post('http://localhost:8000/api/forgot-password',data);
 
@@ -26,6 +32,13 @@ class authservices{
     resetpassword(data){
         return axios.post('http://localhost:8000/api/reset-password',data);
 
+    }
+    changepassword(data){
+        return axios.post('http://localhost:8000/api/profile/change-password',data);
+
+    }
+    changeprofile(data){
+        return axios.post('http://localhost:8000/api/profile/profileimage-update',data);
     }
    
 }
