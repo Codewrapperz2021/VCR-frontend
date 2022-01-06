@@ -8,6 +8,7 @@ import Footer from '../masterdas/footer';
 
 export default function Viewfaculty() {
     const [persons, setPersons] = useState([]);
+    let sno =1;
     useEffect(() => {
         facultyservices.viewfaculty()
             .then(res => {
@@ -42,7 +43,7 @@ export default function Viewfaculty() {
                             </thead>
                             <tbody>
                                 {persons.map(person => <tr>
-                                    <td>{person.id}</td>
+                                    <td>{sno++}</td>
                                     <td>{person.first_name}</td>
                                     <td>{person.last_name}</td>
                                     <td> {person.email}</td>

@@ -1,8 +1,10 @@
 import React,{ useState} from 'react';
 import studentservices from '../../services/studentservices';
+import { useNavigate } from 'react-router';
 import swal from 'sweetalert';
 
 export default function Deletestudent(props)  {
+  const navigate = useNavigate();
   const [id] = useState('');
 
 
@@ -10,6 +12,7 @@ export default function Deletestudent(props)  {
       var id=props.id
       studentservices.deletestudent(id)
         .then(res => {
+          navigate("/admindashboard")
           swal("deleted","data deleted successfully","success" ,{
             buttons: false,
             timer: 2000,

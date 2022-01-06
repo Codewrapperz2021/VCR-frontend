@@ -1,24 +1,27 @@
 import courseservices from '../../services/courseservices';
 import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import '../../form.css';
 export default function Addcourse() {
     const  initialValues={cname:""};
     const [formValues, setformValues] = useState(initialValues);
     const [formErrors, setformErrors] = useState({});
     const[isSubmit , setIsSubmit]=useState(false);
-    let navigate = useNavigate();
-
     
-    function showDash() {
-        navigate('/admindashboard')
-    }
+
 
     const submitHandler = (e) => {
         e.preventDefault();
         const data = { cname: formValues.cname}
-        courseservices.addcourse(data)
-        showDash()
+        courseservices.addcourse(data).then(res => {
+            swal("Added", "details added successfully", "success", {
+              buttons: false,
+              timer: 2000,
+            });
+          })
+        
         setformErrors(validate(formValues));
         setIsSubmit(true);
 
@@ -57,6 +60,7 @@ export default function Addcourse() {
                         </div>
                         <p style={{color:"red"}}>{formErrors.cname}</p>
                         <button id="button" class="addbtn" >Submit</button>
+                        <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
                     </div>
                 </div>
             </form>

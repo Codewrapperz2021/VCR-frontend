@@ -1,6 +1,8 @@
 import lectureservices from '../../services/lectureservices';
 import React, { useState,useEffect } from 'react';
 import '../../form.css';
+import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 export default function Addlecture() {
     const  initialValues={lect_name:"",lect_time:""};
     const [formValues, setformValues] = useState(initialValues);
@@ -12,7 +14,12 @@ export default function Addlecture() {
     const submitHandler = (e) => {
         e.preventDefault();
         const data = { lect_name: formValues.lect_name,lect_time: formValues.lect_time}
-        lectureservices.addlecture(data)
+        lectureservices.addlecture(data).then(res => {
+            swal("Added", "lecture added successfully", "success", {
+              buttons: false,
+              timer: 2000,
+            });
+          })
         
         setformErrors(validate(formValues));
         setIsSubmit(true);
@@ -60,6 +67,7 @@ export default function Addlecture() {
                         </div>
                         <p style={{color:"red"}}>{formErrors.lect_time}</p>
                         <button id="button" class="addbtn">Submit</button>
+                        <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
                     </div>
                 </div>
             </form>

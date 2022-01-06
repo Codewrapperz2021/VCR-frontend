@@ -11,7 +11,7 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password],input[type=date],input[type=email],input[type=time],input[type=password],input[type=file] {
+input[type=text], input[type=password],input[type=date],input[type=email],input[type=time],input[type=password],input[type=file],input[type=select] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -19,6 +19,7 @@ input[type=text], input[type=password],input[type=date],input[type=email],input[
   border: none;
   background: #f1f1f1;
   border-radius: 7px;
+  
 }
 select{
   width: 100%;
@@ -198,3 +199,4 @@ hr {
 text-decoration: none;
 color: #000000;
 }
+

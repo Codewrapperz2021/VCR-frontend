@@ -1,8 +1,12 @@
 import { render } from '@testing-library/react';
 import questionservices from '../../services/questionservices';
 import React, { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import swal from 'sweetalert';
 import '../../form.css'
 export default function Updatequestion() {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState('');
     const [ans1, setAns1] = useState('');
     const [ans2, setAns2] = useState('');
@@ -14,7 +18,13 @@ export default function Updatequestion() {
   function handlesubmit() {
     let id = Number(window.location.pathname.substring(16, 25));
     const data ={question: question, ans1: ans1,ans2:ans2,ans3: ans3,ans4: ans4,correctanswer: correctanswer}
-questionservices.updatequestion(id, data)
+questionservices.updatequestion(id, data).then(res => {
+  navigate("/viewquestion")
+  swal("Edited", "details edited successfully", "success", {
+    buttons: false,
+    timer: 2000,
+  });
+})
   }
   useEffect(() => {
     const id = window.location.pathname.substring(16,25)
@@ -53,6 +63,7 @@ questionservices.updatequestion(id, data)
                   <label for=""><b>Correct Answer</b></label>
                   <input id="correctanswer" type="text" placeholder="Enter correct answer" defaultValue={correctanswer}onChange={(e) => setCorrectanswer(e.target.value)} />
                   <button class="registerbtn" type="button" onClick={handlesubmit}>Update</button>
+                  <center><Link  to="/teacherdashboard">Click to go back</Link></center>
                 </div>
               </div>
     </form>

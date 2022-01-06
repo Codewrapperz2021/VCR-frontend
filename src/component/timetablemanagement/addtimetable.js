@@ -8,6 +8,7 @@ import subjectservices from '../../services/subjectservices';
 import facultyservices from '../../services/facultyservices';
 import timetableservices from '../../services/timetableservices';
 import dayservices from '../../services/dayservices';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 
@@ -191,6 +192,7 @@ export default function Timetable() {
             </div>
             <div className='text-center'>
                 <button id="button" class="Schedule" onClick={handleSchedule}>Schedule</button>
+                <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
             </div>
         </div>
     )

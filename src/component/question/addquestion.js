@@ -1,5 +1,6 @@
 import questionservices from '../../services/questionservices';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../../form.css'
 import swal from 'sweetalert';
 export default function Addquestion() {
@@ -43,6 +44,7 @@ questionservices.addquestion(data).then((res) => {
                   <label for=""><b>Correct Answer</b></label>
                   <input id="correctanswer" type="text" placeholder="Enter correct answer" onChange={(e) => setCorrectanswer(e.target.value)} />
                   <button id="button" class="registerbtn" >Submit</button>
+                  <center><Link  to="/teacherdashboard">Click to Dashboard</Link></center>
                 </div>
               </div>
            </form>
