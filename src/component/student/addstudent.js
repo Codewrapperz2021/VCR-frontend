@@ -1,9 +1,12 @@
 import studentservices from '../../services/studentservices';
 import courseservices from '../../services/courseservices';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import '../../form.css'
 export default function Addstudent() {
-  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "" ,coursename:"",roll:"",college:""};
+  
+  const initialValues = { firstName: "", lastName: "", address: "", email: "", phone: "", coursename: "", roll: "", college: "" };
   const [formValues, setformValues] = useState(initialValues);
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -11,21 +14,24 @@ export default function Addstudent() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const data = { course_id:formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address,roll:formValues.roll,college:formValues.college }
-    for(let i=0;i<courses.length;i++)
-    {
-           if(courses[i].cname===data.course_id)
-           {
-                 data.course_id=courses[i].id;
-                 studentservices.addstudent(data)
-          
-           }
-           setformErrors(validate(formValues));
-           setIsSubmit(true);
-        }
-    
-}
-    //   studentservices.addstudent(data)
+    const data = { course_id: formValues.coursename, first_name: formValues.firstName, last_name: formValues.lastName, email: formValues.email, phone: formValues.phone, address: formValues.address, roll: formValues.roll, college: formValues.college }
+    for (let i = 0; i < courses.length; i++) {
+      if (courses[i].cname === data.course_id) {
+        data.course_id = courses[i].id;
+        studentservices.addstudent(data).then(res => {
+          swal("Added", "details added successfully", "success", {
+            buttons: false,
+            timer: 2000,
+          });
+        })
+
+      }
+      setformErrors(validate(formValues));
+      setIsSubmit(true);
+    }
+
+  }
+  //   studentservices.addstudent(data)
   //   setformErrors(validate(formValues));
   //   setIsSubmit(true);
   // }
@@ -53,7 +59,6 @@ export default function Addstudent() {
     let lname = /^[a-zA-Z]([a-zA-Z]){2,10}$/;
     let phone = /^([0-9]){10}$/;
     let email = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-    let roll = /^([0-9]){10}$/;
     if (!values.firstName) {
       errors.firstName = "first name is required*";
     } else if (!fname.test(values.firstName)) {
@@ -80,12 +85,10 @@ export default function Addstudent() {
     }
     if (!values.roll) {
       errors.roll = "roll no is required*";
-    } else if (!roll.test(values.roll)) {
-      errors.roll = "please enter valid roll number";
-    }
+    } 
     if (!values.college) {
       errors.college = "college is required*";
-    } 
+    }
     return errors
   }
   return (
@@ -95,13 +98,15 @@ export default function Addstudent() {
           <div className="col-md-6 shadow p-4">
             <h3 className="text-center">Add Student</h3>
             <hr />
+            <label for=""><b>Select course</b></label>
             <div>
-              <select className='select_drop' name="coursename" value={formValues.coursename} onChange={handleChange}>
+              <select name="coursename"value={formValues.coursename} onChange={handleChange}>
                 {courses.map(course =>
                   <option value={course.cname} >{course.cname}</option>
                 )}
               </select>
             </div>
+            <br/>
             <div>
               <label for=""><b>First Name*</b></label>
               <input id="fname" name="firstName" type="text" placeholder="Enter your first name" value={formValues.firstName} onChange={handleChange} />
@@ -138,6 +143,7 @@ export default function Addstudent() {
             </div>
             <p style={{ color: "red" }}>{formErrors.college}</p>
             <button id="button" class="addbtn">Submit</button>
+            <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
           </div>
         </div>
       </form>

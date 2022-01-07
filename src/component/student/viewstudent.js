@@ -4,12 +4,27 @@ import studentservices from '../../services/studentservices';
 import Navbar from '../masterdas/navbar';
 import Adminsidebar from '../masterdas/adminsidebar';
 import Footer from '../masterdas/footer';
+import axios from 'axios'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 
 export default function Viewstudent() {
+  const data = useSelector(state => state.UserData)
+  const token = (token)=>{
+    axios.interceptors.request.use(function (config){
+        const token = data.data.token
+        console.log(token)
+        config.headers.Authorization = token ? `Bearer ${token}` : '';
+        return config;
+    })
+}
+
   const [persons, setPersons] = useState([]);
+  let sno=1;
   useEffect(() => {
+    token();
     studentservices.viewstudent()
       .then(res => {
         const persons = res.data;
@@ -26,8 +41,9 @@ export default function Viewstudent() {
         </div>
         <div id="layoutSidenav_content">
           <main>
-          <h2 class="text-center " > Student list</h2>
-            <table id='content' className="table table-bordered mx-2 my-2">
+          <h2 class="text-center "> Student list</h2>
+          <div className='mx-2 my-2'>
+            <table id='content' className="table table-bordered ">
               <thead>
                 <tr className="table-info ">
                   <th scope="col-2">S.no.</th>
@@ -35,6 +51,8 @@ export default function Viewstudent() {
                   <th scope="col-2">Last Name</th>
                   <th scope="col-3">Email</th>
                   <th scope="col-3">Course</th>
+                  <th scope="col-3">Roll</th>
+                  <th scope="col-3">College</th>
                   <th scope="col-3">Contact</th>
                   <th scope="col-3">Address</th>
                   <th scope="col-2">Action</th>
@@ -43,12 +61,13 @@ export default function Viewstudent() {
               </thead>
               <tbody>
                 {persons.map(person => <tr>
-                  <td>{person.id}</td>
-
+                  <td>{sno++}</td>
                   <td>{person.first_name}</td>
                   <td>{person.last_name}</td>
                   <td> {person.email}</td>
                   <td> {person.cname}</td>
+                  <td> {person.roll}</td>
+                  <td> {person.college}</td>
                   <td>{person.phone}</td>
                   <td>{person.address}</td>
                   <td><Deletestudent id={person.id} /> &nbsp;
@@ -59,6 +78,7 @@ export default function Viewstudent() {
                 }
               </tbody>
             </table>
+            </div>
           </main>
           <Footer />
         </div>

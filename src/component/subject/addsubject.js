@@ -1,6 +1,8 @@
 import subjectservices from '../../services/subjectservices';
 import React, { useState, useEffect } from 'react';
 import courseservices from '../../services/courseservices';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import '../../form.css'
 export default function Addsubjct() {
     const initialValues = { sname: "", subject_code: "", coursename:""};
@@ -8,6 +10,7 @@ export default function Addsubjct() {
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [courses, setCourses] = useState([]);
+    
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -19,7 +22,12 @@ export default function Addsubjct() {
                if(courses[i].cname===data.course_id)
                {
                      data.course_id=courses[i].id;
-                     subjectservices.addsubject(data);
+                     subjectservices.addsubject(data).then(res => {
+                        swal("Added", "details added successfully", "success", {
+                          buttons: false,
+                          timer: 2000,
+                        });
+                      })
               
                }
                setformErrors(validate(formValues));
@@ -62,13 +70,15 @@ export default function Addsubjct() {
                     <div className="col-md-6 shadow p-4">
                         <h3 className="text-center">Add Subject</h3>
                         <hr />
+                        <label for=""><b>Select subject</b></label>
                         <div>
-                            <select className='select_drop'  name="coursename" value={formValues.coursename} onChange={handleChange}>
+                            <select  name="coursename" value={formValues.coursename} onChange={handleChange}>
                                 {courses.map(course =>
                                     <option  value={course.cname} >{course.cname}</option>
                                 )}
                             </select>
                         </div>
+                        <br/>
                         <div>
                             <label for=""><b>Subject Name</b></label>
                             <input id="sname" name="sname" type="text" placeholder="Enter your subject name" value={formValues.sname} onChange={handleChange} />
@@ -80,6 +90,7 @@ export default function Addsubjct() {
                         </div>
                         <p style={{ color: "red" }}>{formErrors.subject_code}</p>
                         <button id="button" class="addbtn" >Submit</button>
+                        <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
                     </div>
                 </div>
             </form>

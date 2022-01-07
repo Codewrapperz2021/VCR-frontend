@@ -48,9 +48,18 @@ export default function Teachersidebar() {
                     </a>
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="/result">Show Results</Link>
+
+                            <Link className="nav-link" to="/teacher-result">Show Results</Link>
+
+                            <Link className="nav-link" to="">Show Results</Link>
+
                         </nav>
+                        
                     </div>
+                    {/* <Link className="nav-link" to="/teachertodolist">
+                            <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
+                            <h6 className="pt-2 " style={{ color: "white" }}>My Todo list</h6>
+                        </Link> */}
                 </div>
             </div>
         </nav>

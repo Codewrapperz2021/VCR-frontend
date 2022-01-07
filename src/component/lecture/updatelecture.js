@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import lectureservices from '../../services/lectureservices';
 import '../../form.css';
+import { useNavigate } from 'react-router';
+import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 
 
 export default function Updatelecture() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const [lect_name, setLect_name] = useState('');
   const [lect_time, setLect_time] = useState('');
   
   function handlesubmit() {
     const data = { lect_name:lect_name,lect_time:lect_time}
-    lectureservices.updatelecture(id, data)
+    lectureservices.updatelecture(id, data).then(res => {
+      navigate("/viewlecture")
+      swal("Edited", "details edited successfully", "success", {
+        buttons: false,
+        timer: 2000,
+      });
+    })
     
   }
   useEffect(() => {
@@ -37,6 +47,7 @@ export default function Updatelecture() {
             <label for=""><b>Lecture Time</b></label><br></br>
             <input type="time" name='lect_time' defaultValue={lect_time} onChange={(e) => setLect_time(e.target.value)} />            
             <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
+            <center><Link  to="/viewlecture">Click to go back</Link></center>
           </div>
         </div>
     </form>

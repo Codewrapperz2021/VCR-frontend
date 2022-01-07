@@ -15,6 +15,8 @@ const StudentDashboard = () => {
     const [course, setCourse] = useState();
     const data = useSelector(state => state.UserData)
     let sn = 1;
+    console.log(data.data.user.email);
+    console.log(course)
     useEffect(() => {
         subjectservices.viewsubject()
             .then(res => {
@@ -23,7 +25,9 @@ const StudentDashboard = () => {
             })
         studentservices.viewstudent()
             .then(res => {
+                console.log("data",res.data)
                 for (let i = 0; i < res.data.length; i++) {
+                    console.log(res.data)
                     if (res.data[i].email == data.data.user?.email) {
                         console.log(res.data[i].email)
                         setCourse(res.data[i]?.course_id)

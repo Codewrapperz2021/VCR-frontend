@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import subjectservices from '../../services/subjectservices';
 import '../../form.css';
+import { useNavigate } from 'react-router';
+import swal from 'sweetalert';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Updatesubject() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const [sName, setsName] = useState('');
   const [subjectCode, setsubjectCode] = useState('');
@@ -11,7 +15,13 @@ export default function Updatesubject() {
 
   function handlesubmit() {
     const data = { sname: sName, subject_code: subjectCode}
-    subjectservices.updatesubject(id, data)
+    subjectservices.updatesubject(id, data).then(res => {
+      navigate("/viewsubject")
+      swal("Edited", "details edited successfully", "success", {
+        buttons: false,
+        timer: 2000,
+      });
+    })
   }
   useEffect(() => {
     subjectservices.subjectById(id)
@@ -36,6 +46,7 @@ export default function Updatesubject() {
              <input type="text" name='subject_code' value={subjectCode} onChange={(e) => setsubjectCode(e.target.value)} />
             
             <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
+            <center><Link  to="/viewsubject">Click to go back</Link></center>
           </div>
         </div>
     </form>

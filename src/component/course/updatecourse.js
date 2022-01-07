@@ -2,15 +2,25 @@ import React, { useState, useEffect } from 'react';
 import courseservices from '../../services/courseservices';
 import '../../form.css';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 export default function Updatecourse() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const [cname, setcName] = useState('');
   
   function handlesubmit() {
     const data = { cname:cname}
-    courseservices.updatecourse(id, data)
+    courseservices.updatecourse(id, data).then(res => {
+      navigate("/viewcourse")
+      swal("Edited", "details edited successfully", "success", {
+        buttons: false,
+        timer: 2000,
+      });
+    })
     
   }
   useEffect(() => {
@@ -33,6 +43,7 @@ export default function Updatecourse() {
             <label for=""><b>Course Name</b></label>
             <input type="text" name='sname' defaultValue={cname} onChange={(e) => setcName(e.target.value)} />            
             <button class="updatebtn" type="button" onClick={handlesubmit}>Update</button>
+            <center><Link  to="/viewcourse">Click to go back</Link></center>
           </div>
         </div>
     </form>

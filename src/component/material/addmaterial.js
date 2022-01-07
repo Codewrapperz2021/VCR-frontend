@@ -1,6 +1,8 @@
 import materialservices from '../../services/materialservices';
 import courseservices from '../../services/courseservices';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import '../../form.css';
 export default function Addmaterial() {
     const [material, setMaterial] = useState(null);
@@ -15,7 +17,12 @@ export default function Addmaterial() {
         formdata.append("course",course)
         formdata.append("comment",comment)
         formdata.append('file',document.getElementById('file').files[0])
-        materialservices.addmaterial(formdata)
+        materialservices.addmaterial(formdata).then(res => {
+            swal("Added", "materials added successfully", "success", {
+              buttons: false,
+              timer: 2000,
+            });
+          })
     }
 
     useEffect(() => {
@@ -35,20 +42,21 @@ export default function Addmaterial() {
                         <hr />
                         <label for=""><b>Select course</b></label>
                         <div>
-                            <select className='select_drop' name="course" onChange={(e) => setCourse(e.target.value)}>
+                            <select  name="course" onChange={(e) => setCourse(e.target.value)}>
                             {coursenames.map(course =>
                                     <option value={course.cname} >{course.cname}</option>
                                 )}
                             </select>
                         </div>
-
+                        <br/>
                         <label for=""><b>material</b></label><br></br>
-                        <input id="file" name="file" type="file" placeholder="Enter the material" onChange={(e) => setMaterial(e.target.material[0])} />
+                        <input id="file" name="file" type="file" placeholder="Enter the material" onChange={(e) => setMaterial(e.target.files[0])} />
 
                         <label for=""><b>comment</b></label>
                         <input id="comment" type="text" placeholder="comment" onChange={(e) => setComment(e.target.value)} />
 
                         <button id="button" class="addbtn">Submit</button>
+                        <center><Link  to="/teacherdashboard">Click to go back</Link></center>
                     </div>
                 </div>
             </form>

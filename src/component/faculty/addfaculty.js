@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 import facultyservices from '../../services/facultyservices';
 import React, { useState, useEffect } from 'react';
 import subjectservices from '../../services/subjectservices';
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import '../../form.css';
 
 export default function Addfaculty() {
@@ -20,7 +22,12 @@ export default function Addfaculty() {
                if(subjects[i].sname===data.subject_id)
                {
                      data.subject_id=subjects[i].id;
-                     facultyservices.addfaculty(data);
+                     facultyservices.addfaculty(data).then(res => {
+                      swal("Added", "details added successfully", "success", {
+                        buttons: false,
+                        timer: 2000,
+                      });
+                    })
               
                }
                setformErrors(validate(formValues));
@@ -83,13 +90,16 @@ export default function Addfaculty() {
           <div className="col-md-6 shadow p-4">
             <h3 className="text-center">Add Faculty</h3>
             <hr />
+            <label for=""><b>Select subject</b></label>
             <div>
-              <select className='select_drop' name="subjectname" value={formValues.subjectname} onChange={handleChange}>
+            
+              <select className='' name="subjectname" value={formValues.subjectname} onChange={handleChange}>
                 {subjects.map(subject =>
                   <option value={subject.sname} >{subject.sname}</option>
                 )}
               </select>
             </div>
+            <br/>
             <div>
               <label for=""><b>First Name</b></label>
               <input id="fname" name="firstName" type="text" placeholder="Enter your first name" value={formValues.firstName} onChange={handleChange} />
@@ -116,6 +126,7 @@ export default function Addfaculty() {
             </div>
             <p style={{ color: "red" }}>{formErrors.phone}</p>
             <button id="button" class="addbtn">Submit</button>
+            <center><Link  to="/admindashboard">Click to Dashboard</Link></center>
           </div>
         </div>
       </form>
