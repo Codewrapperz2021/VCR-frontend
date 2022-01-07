@@ -40,6 +40,11 @@ class authservices{
     changeprofile(data){
         return axios.post('http://localhost:8000/api/profile/profileimage-update',data);
     }
+    profileById(id){
+        {
+            return axios.get('http://localhost:8000/api/user/'+id);
+        }
+    }
    
 }
 

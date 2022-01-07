@@ -39,7 +39,7 @@ export default function Navbar() {
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><button className="dropdown-item" onClick={()=>logout(data.data.token)}>Logout</button></li>
                                 <li className="dropdown-item "><Link to="/change-password/" style={{color:"black"}} className='missing'>Change Password</Link></li>
-                                <li className="dropdown-item" ><Link to="/change-profile/" style={{color:"black"}} className='missing'>Edit Profile</Link></li>
+                                <li className="dropdown-item" ><Link to={"/change-profile/"+ data.data.user.id} style={{color:"black"}} className='missing'>Edit Profile</Link></li>
                     </ul>
                 </li>
             </ul>
