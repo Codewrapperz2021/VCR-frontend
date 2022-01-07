@@ -97,7 +97,7 @@ export default function Path() {
                     <Route path="/forget-password" element={<Forget />} />
                     <Route path="/reset-password/" element={<Resetpassword />} />
                     <Route path="/change-password/" element={<Changepassword />} />
-                    <Route path="/change-profile/" element={<Editprofile />} />
+                    <Route path="/change-profile/:id" element={<Editprofile />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/register" element={<Register />} />
 
