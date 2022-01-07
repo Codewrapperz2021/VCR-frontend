@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../masterdas/navbar";
 import Studentsidebar from "../masterdas/studentsidebar";
 import Footer from "../masterdas/footer";
+import Viewlist from "./Viewlist";
 
 export default function Studenttodolist() {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ export default function Studenttodolist() {
     });
   }
   function save() {
-    let data = { noteslist};
+    let data = {noteslist};
     fetch("http://localhost:8000/api/todo/", {
       method: "POST",
       headers: {
@@ -60,19 +61,7 @@ export default function Studenttodolist() {
                 <div className="container d-flex justify-content-between">
                   <div className="col-md-6 text-center">
                     <h4 className="bg-dark p-2 text-light bg-opacity-50">My list</h4>
-                    <table className="table table-striped" border="0">
-
-                      {data.map((item) => (
-                        <tr className="bg-opacity-50 bg-secondary">
-                          <td className="">{sno++}</td>
-                          <td>{item.noteslist}</td>
-                          <td className="d-flex justify-content-around">
-                            <button className="btn shadow " onClick={() => deleteuser(item.id)}><i class="fas fa-trash-alt text-danger"></i></button>
-                            {/* <button className="btn shadow " onClick={() => deleteuser(item.id)}><i class="fas fa-edit text-dark"></i></button> */}
-                          </td>
-                        </tr>
-                      ))}
-                    </table>
+                    <Viewlist/>
 
 
 
