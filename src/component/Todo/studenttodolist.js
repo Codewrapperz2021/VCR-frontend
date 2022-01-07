@@ -60,13 +60,7 @@ export default function Studenttodolist() {
                 <h3>My todo list</h3>
                 <div className="container d-flex justify-content-between">
                   <div className="col-md-6 text-center">
-                    <h4 className="bg-dark p-2 text-light bg-opacity-50">My list</h4>
                     <Viewlist/>
-
-
-
-
-
                   </div>
                   <div className="col-md-5" >
                   <h4 className="bg-dark p-2 text-light bg-opacity-50">Add New</h4>
@@ -79,16 +73,10 @@ export default function Studenttodolist() {
                         setNoteslist(e.target.value);
                       }} />
                       <button className="btn btn-dark" onClick={save}>Submit</button>
-
-
-
                   </div>
-
                 </div>
               </div>
-
             </div>
-
           </main>
           <Footer />
         </div>

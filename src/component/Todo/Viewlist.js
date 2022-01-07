@@ -27,7 +27,7 @@ const Viewlist = () => {
     }
     return (
         <div>
-            <h3 className='text-center'>My todo list</h3>
+            <h4 className="bg-dark p-2 text-light bg-opacity-50 text-center">My list</h4>
             <table className="table table-striped" border="0">
                 {data.map((item) => (
                     <tr className="bg-opacity-50 bg-secondary">
