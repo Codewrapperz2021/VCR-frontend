@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import Studentsidebar from '../masterdas/studentsidebar';
 import Navbar from '../masterdas/navbar';
 import Footer from '../masterdas/footer';
+import Viewlist from '../Todo/Viewlist';
 
 
 const StudentDashboard = () => {
@@ -68,21 +69,8 @@ const StudentDashboard = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-md-4 d-flex justify-content-around shadow p-2' style={{ height: "100px" }}>
-                                    <div className='col-md-3 text-center'>
-                                        <p>Attendence</p>
-                                        <p className='fs-3 text-danger'>345</p>
-
-                                    </div>
-                                    <div className='col-md-3 text-center'>
-                                        <p>Half day</p>
-                                        <p className='fs-3 text-danger'>40</p>
-
-                                    </div>
-                                    <div className='col-md-3 text-center'>
-                                        <p>Leave</p>
-                                        <p className='fs-3 text-primary'>40</p>
-                                    </div>
+                                <div className='col-md-4 d-flex justify-content-around shadow p-2 flow' style={{height:"200px"}} >
+                                    <Viewlist/ >
 
                                 </div>
                             </div>
