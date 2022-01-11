@@ -6,7 +6,7 @@ import Footer from '../masterdas/footer';
 import '../../App.css';
 import '../script';
 import swal from 'sweetalert';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios'
 const AdminDashboard = () => {
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
                                     <h4 className="abc1">Teacher detail</h4>
                                     <div className="col-md-6">
                                         <div className="card text-white" >
-                                            <div className="card-body">Show Details</div>
+                                            <div className="card-body">View Teachers</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
                                                 <Link className="small text-white stretched-link" to="/viewfaculty">View Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
                                         <div className="card text-white ">
                                             <div className="card-body">Add Teacher</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <Link className="small text-white stretched-link" to="/addfaculty">View Details</Link>
+                                                <Link className="small text-white stretched-link" to="/addfaculty">Add Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
                                     <h4 className="abc1">Students detail</h4>
                                     <div className="col-md-6">
                                         <div className="card text-white ">
-                                            <div className="card-body">Show Details</div>
+                                            <div className="card-body">View Students</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
                                                 <Link className="small text-white stretched-link" to="/viewstudent">View Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -81,7 +81,7 @@ const AdminDashboard = () => {
                                         <div className="card text-white ">
                                             <div className="card-body">Add Student</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <Link className="small text-white stretched-link" to="/addstudent">View Details</Link>
+                                                <Link className="small text-white stretched-link" to="/addstudent">Add Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@ const AdminDashboard = () => {
                                     <h4 className="abc1">Courses detail</h4>
                                     <div className="col-md-6">
                                         <div className="card text-white">
-                                            <div className="card-body">Show Details</div>
+                                            <div className="card-body">View Courses</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
                                                 <Link className="small text-white stretched-link" to="/viewcourse">View Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
                                         <div className="card text-white ">
                                             <div className="card-body">Add Course</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <Link className="small text-white stretched-link" to="/addcourse">View Details</Link>
+                                                <Link className="small text-white stretched-link" to="/addcourse">Add Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
                                     <h4 className="abc1">Subjects detail</h4>
                                     <div className="col-md-6">
                                         <div className="card text-white ">
-                                            <div className="card-body">Show Details</div>
+                                            <div className="card-body">View Subjects</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
                                                 <Link className="small text-white stretched-link" to="/viewsubject">View Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
                                         <div className="card text-white ">
                                             <div className="card-body">Add Subject</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <Link className="small text-white stretched-link" to="/addsubject">View Details</Link>
+                                                <Link className="small text-white stretched-link" to="/addsubject">Add Details</Link>
                                                 <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
