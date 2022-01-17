@@ -43,6 +43,7 @@ export default function Addmaterial() {
                         <label for=""><b>Select course</b></label>
                         <div>
                             <select  name="course" onChange={(e) => setCourse(e.target.value)}>
+                            <option value="select">select</option>
                             {coursenames.map(course =>
                                     <option value={course.cname} >{course.cname}</option>
                                 )}
