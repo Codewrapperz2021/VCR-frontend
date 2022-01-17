@@ -73,6 +73,7 @@ export default function Addsubjct() {
                         <label for=""><b>Select subject</b></label>
                         <div>
                             <select  name="coursename" value={formValues.coursename} onChange={handleChange}>
+                            <option value="select">select</option>
                                 {courses.map(course =>
                                     <option  value={course.cname} >{course.cname}</option>
                                 )}

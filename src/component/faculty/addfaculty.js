@@ -94,10 +94,12 @@ export default function Addfaculty() {
             <div>
             
               <select className='' name="subjectname" value={formValues.subjectname} onChange={handleChange}>
+              <option value="select">select</option>
                 {subjects.map(subject =>
                   <option value={subject.sname} >{subject.sname}</option>
                 )}
               </select>
+              {console.log(formValues.subjectname)}
             </div>
             <br/>
             <div>
