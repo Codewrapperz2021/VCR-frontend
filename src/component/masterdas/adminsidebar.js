@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import '../script';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 export default function Adminsidebar() {
 
@@ -82,13 +82,11 @@ export default function Adminsidebar() {
                             <Link className="nav-link" to="/addtimetable">Add Timetable</Link>
                             <Link className="nav-link" to="/viewtimetable">View Timetable</Link>
                         </nav>
-                        
                     </div>
-                    {/* <Link className="nav-link" to="/admintodolist">
+                    <Link className="nav-link" to="/admintodolist">
                         <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
-                        <h6 className="pt-2 " style={{ color: "white" }}>My Todo list</h6>
-                    </Link> */}
-
+                        <h6 className="pt-2 " style={{ color: "white" }}>My NoteBook</h6>
+                    </Link>
                 </div>
             </div>
         </nav>
