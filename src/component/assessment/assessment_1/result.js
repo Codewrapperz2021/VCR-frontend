@@ -65,8 +65,7 @@ export default function Result() {
                                         <div className='d-flex'><h6 className='text-uppercase'>college : </h6><p className='pro text-uppercase'> {student.college} </p></div>
                                         <div className='d-flex'><h6 className='text-uppercase'>address : </h6><p className='pro text-uppercase'> {student.address} </p></div>
                                     </div>
-                                    <div className='col-md-2 '>
-
+                                    <div className='col-md-2 mt-4'>
                                         <img className='resultprofile' src={`http://localhost:8000/images/profilephoto/${data.data.user.profileimage}`} />
                                         <button className="print" onClick={PdfGenerate}>print</button>
                                     </div>

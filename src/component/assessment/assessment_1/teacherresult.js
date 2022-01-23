@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import studentassessmentservices from '../../../services/studentassessment';
 import studentservices from '../../../services/studentservices';
-import authservices from '../../../services/authservices';
 import Navbar from '../../masterdas/navbar';
 import Teachersidebar from '../../masterdas/teachersidebar';
 import Footer from '../../masterdas/footer';

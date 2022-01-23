@@ -41,25 +41,14 @@ export default function Teachersidebar() {
                             <Link className="nav-link" to="/viewmaterial">Show Material</Link>
                         </nav>
                     </div>
-                    <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div className="sb-nav-link-icon"><i className="fa fa-list-alt navbar-logo"></i></div>
+                    <Link className="nav-link" to="">
+                        <div className="sb-nav-link-icon  "><i className="fa fa-list-alt navbar-logo"></i></div>
                         <h6 className="pt-2 " style={{ color: "white" }}>Results</h6>
-                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down navbar-logo"></i></div>
-                    </a>
-                    <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav className="sb-sidenav-menu-nested nav">
-
-                            <Link className="nav-link" to="/teacher-result">Show Results</Link>
-
-                            <Link className="nav-link" to="">Show Results</Link>
-
-                        </nav>
-                        
-                    </div>
-                    {/* <Link className="nav-link" to="/teachertodolist">
-                            <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
-                            <h6 className="pt-2 " style={{ color: "white" }}>My Todo list</h6>
-                        </Link> */}
+                    </Link>
+                    <Link className="nav-link" to="/teachertodolist">
+                        <div className="sb-nav-link-icon  "><i className="fas fa-calendar-check navbar-logo"></i></div>
+                        <h6 className="pt-2 " style={{ color: "white" }}>My NoteBook</h6>
+                    </Link>
                 </div>
             </div>
         </nav>
