@@ -16,7 +16,7 @@ export default function Student_time() {
   const [selectcourseID, setSelectcourseID] = useState(0)
   const [course, setCourse] = useState('')
   const [student, setStudent] = useState([]);
-  const data = useSelector(state => state.UserData)
+  const data = useSelector(state => state.login.UserData)
 
   useEffect(() => {
     timetableservices.viewtimetable()

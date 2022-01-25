@@ -14,7 +14,7 @@ const StudentDashboard = () => {
 
     const [subjects, setSubjects] = useState([]);
     const [course, setCourse] = useState();
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
     let sn = 1;
     console.log(data.data.user.email);
     console.log(course)

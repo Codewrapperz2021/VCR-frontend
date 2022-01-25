@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 
 export default function Todolist() {
-  const user_data = useSelector(state => state.UserData)
+  const user_data = useSelector(state => state.login.UserData)
   const [data, setData] = useState([]);
   const [noteslist, setNoteslist] = useState("");
   let sno = 1;

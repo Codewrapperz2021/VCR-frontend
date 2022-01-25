@@ -11,23 +11,14 @@ import { useSelector } from 'react-redux';
 import axios from 'axios'
 const AdminDashboard = () => {
 
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
     const logout = (token) => {
-        axios.interceptors.request.use(function (config) {
-            const token = data.data.token
-            console.log(token)
-            config.headers.Authorization = token ? `Bearer ${token}` : '';
-            return config;
-        })
-
         authservices.logout(data).then((res) => {
             window.location.href = "/";
             swal("Logged Out!", "Login to access Dashboard!", "success", {
                 buttons: false,
                 timer: 2000,
-
             });
-
         });
     }
     return (

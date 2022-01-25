@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 
 export default function Viewlist() {
-    const user_data = useSelector(state => state.UserData)
+    const user_data = useSelector(state => state.login.UserData)
     const [data, setData] = useState([]);
     const user_id = user_data.data.user.id;
     let sno = 1;

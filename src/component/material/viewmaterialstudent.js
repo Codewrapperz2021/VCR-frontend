@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 export default function Viewmaterialstudent() {
     const [materials, setMaterials] = useState([]);
     const [course, setCourse] = useState();
-
     let sno = 1;
     console.log(course)
     useEffect(() => {
@@ -32,7 +31,7 @@ export default function Viewmaterialstudent() {
                 setMaterials(material);
             })
     }, [])
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
 
     return (
         <div className="sb-nav-fixed">
@@ -43,7 +42,7 @@ export default function Viewmaterialstudent() {
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
-                    <h2 class="text-center"> Material list</h2>
+                        <h2 class="text-center"> Material list</h2>
                         <table class="table table-bordered mx-2 my-2">
                             <thead>
                                 <tr class="table-info">
@@ -68,9 +67,8 @@ export default function Viewmaterialstudent() {
                                 }) : ''}
                             </tbody>
                         </table>
-                       <center><Link to="/admindashboard">Click to Dashboard</Link></center>
+                        <center><Link to="/admindashboard">Click to Dashboard</Link></center>
                     </main>
-                    
                     <Footer />
                 </div>
             </div>

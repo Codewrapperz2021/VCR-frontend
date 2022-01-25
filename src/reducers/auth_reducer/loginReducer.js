@@ -1,16 +1,20 @@
-import {LOGIN} from '../../actions/action';
-const initState={
-    UserData:{}
+import { LOGIN, EMPTY } from '../../actions/action';
+const initState = {
+    UserData: {}
 }
 
-export default function loginReducer(state=initState,action){
-    switch(action.type){
+export default function loginReducer(state = initState, action) {
+    switch (action.type) {
         case LOGIN:
             return {
                 // ...state,      
-                UserData:action.payload,state
+                UserData: action.payload, state
             }
-                default:
-                    return state
+        case EMPTY:
+            return {
+                UserData: {}
+            }
+        default:
+            return state
     }
 }

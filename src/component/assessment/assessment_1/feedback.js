@@ -10,7 +10,7 @@ const colors = {
   grey: "#a9a9a9"
 };
 export default function Feedback() {
-  const data = useSelector(state => state.UserData)
+  const data = useSelector(state => state.login.UserData)
   const [currentValue, setCurrentValue] = useState(0);
   const [textarea, setTextarea] = useState('');
   const stars = Array(5).fill(0)

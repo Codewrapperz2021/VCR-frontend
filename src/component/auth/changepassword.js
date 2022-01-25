@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import '../../form.css';
+import Navbar from '../masterdas/navbar';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
 
@@ -8,18 +9,13 @@ import authservices from '../../services/authservices'
 
 export default function Changepassword() {
     const navigate = useNavigate();
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
     const [oldpassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
     const [cpassword, setCPassword] = useState('');
 
     const token = (token)=>{
-        axios.interceptors.request.use(function (config){
-            const token = data.data.token
-            console.log(token)
-            config.headers.Authorization = token ? `Bearer ${token}` : '';
-            return config;
-        })
+        
     }
     const submitHandler = (e) => {
         e.preventDefault();
@@ -30,6 +26,8 @@ export default function Changepassword() {
         });
     }
     return (
+      <div className="sb-nav-fixed">
+      <Navbar />
         <div>
         <form enctype="multipart/form-data" onSubmit={(e) => { submitHandler(e) }}>
           <div className="container pt-5 d-flex justify-content-center" >
@@ -49,6 +47,7 @@ export default function Changepassword() {
             </div>
           </div>
         </form>
+      </div>
       </div>
     )
 }
