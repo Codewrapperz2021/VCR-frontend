@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import authservices from '../../services/authservices';
 import '../../App.css';
 import '../script';
 import swal from 'sweetalert';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios'
+import { EMPTY } from '../../actions/action';
 export default function Navbar() {
+    const dispatch = useDispatch();
 
-    const data = useSelector(state => state.UserData)
-    const logout = (token) => {
+    const data = useSelector(state => state.login.UserData)
+    useEffect(() => {
         axios.interceptors.request.use(function (config) {
             const token = data.data.token
             console.log(token)
             config.headers.Authorization = token ? `Bearer ${token}` : '';
             return config;
         })
+    }, []);
+    
+    const logout = (token) => {
+       
         authservices.logout(data).then((res) => {
             window.location.href = "/";
+            dispatch({type:EMPTY})
             swal("Logged Out!", "Login to access Dashboard!", "success", {
                 buttons: false,
                 timer: 2000,

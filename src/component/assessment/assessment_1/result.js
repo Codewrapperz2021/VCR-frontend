@@ -14,7 +14,7 @@ export default function Result() {
     const [studentid, setStudentid] = useState('');
     const [student, setStudent] = useState([]);
 
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
     let id = 1;
     let per = 0;
     let r = 0;

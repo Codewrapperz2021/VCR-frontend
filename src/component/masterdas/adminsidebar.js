@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 export default function Adminsidebar() {
 
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
 
     return (
         <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">

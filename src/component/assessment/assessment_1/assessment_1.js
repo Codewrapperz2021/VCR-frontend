@@ -15,7 +15,7 @@ export default function Assessment_1() {
     })
     console.log(hoursMinSecs)
   
-    const data = useSelector(state => state.UserData)
+    const data = useSelector(state => state.login.UserData)
     const [questions, setQuestion] = useState([]);
     const [id, setId] = useState(0);
     const [multidata, setMultidata] = useState([]);
