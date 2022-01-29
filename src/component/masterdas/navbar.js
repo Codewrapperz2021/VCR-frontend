@@ -15,14 +15,12 @@ export default function Navbar() {
     useEffect(() => {
         axios.interceptors.request.use(function (config) {
             const token = data.data.token
-            console.log(token)
             config.headers.Authorization = token ? `Bearer ${token}` : '';
             return config;
         })
     }, []);
     
     const logout = (token) => {
-       
         authservices.logout(data).then((res) => {
             window.location.href = "/";
             dispatch({type:EMPTY})

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 
 
 import AdminDashboard from './component/dashboard/admindashboard';
@@ -21,7 +20,6 @@ import Resetpassword from './component/auth/resetpassword';
 import Changepassword from './component/auth/changepassword';
 import Editprofile from './component/auth/editprofile';
 import Login from './component/auth/login';
-import Logout from './component/auth/logout';
 import Register from './component/auth/register';
 
 
@@ -71,82 +69,107 @@ import Admintodolist from './component/Todo/admintodolist';
 import Studenttodolist from './component/Todo/studenttodolist';
 
 
+import Protectedadmin from './Routeprotection/Protectedadmin'; 
+import Protectedstudent from './Routeprotection/Protectedstudent'; 
+import Protectedteacher from './Routeprotection/Protectedteacher';
+import Masterprotection from './Routeprotection/Masterprotection';
+
+
 export default function Path() {
-    
+
     return (
         <div>
             <Router>
 
                 <Routes>
+                        {/* unprotected routes  */}
+
                     <Route path="/" element={<Login />} />
-
-                    <Route path="/admindashboard" element={<AdminDashboard />} />
-                    <Route path="/studentdashboard" element={<StudentDashboard />} />
-                    <Route path="/teacherdashboard" element={<TeacherDashboard />} />
-
-                    
-                    <Route path="/sidebar" element={<Studentsidebar />} />
-                    <Route path="/footer" element={<Footer/>} />
-
-                    
-                    <Route path="/sidebar" element={<Teachersidebar />} />
-
-                    <Route path="/navbar" element={<Navbar />} />
-                    <Route path="/sidebar" element={<Adminsidebar />} />
-
+                    <Route path="/register" element={<Register />} />
                     <Route path="/forget-password" element={<Forget />} />
                     <Route path="/reset-password/" element={<Resetpassword />} />
-                    <Route path="/change-password/" element={<Changepassword />} />
-                    <Route path="/change-profile/:id" element={<Editprofile />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="/register" element={<Register />} />
 
-                    <Route path="/addtimetable" element={<Addtimetable />} />
-                    <Route path="/viewtimetable" element={<Viewtimetable />} />
-                    <Route path="/student_time" element={<Student_time />} />
+                            {/* **** */}
 
-                    <Route path="/addlecture" element={<Addlecture />} />
-                    <Route path="/viewlecture" element={<Viewlecture />} />
-                    <Route exact path={"updatelecture/:id"} element={<Updatelecture />} />
+                    <Route element={<Masterprotection />}>
 
-                    <Route path="/viewfaculty" element={<Viewfaculty />} />
-                    <Route path="/addfaculty" element={<Addfaculty />} />
-                    <Route exact path={"updatefaculty/:id"} element={<Updatefaculty />} />
+                        <Route path="/navbar" element={<Navbar />} />
+                        <Route path="/footer" element={<Footer />} />
+                        <Route path="/change-password/" element={<Changepassword />} />
+                        <Route path="/change-profile/:id" element={<Editprofile />} />
+                        
 
-                    <Route path="/viewstudent" element={<Viewstudent />} />
-                    <Route path="/addstudent" element={<Addstudent />} />
-                    <Route exact path={"updatestudent/:id"} element={<Updatestudent />} />
+                        <Route element={<Protectedadmin />}>
 
-                    <Route path="/viewsubject" element={<Viewsubject />} />
-                    <Route path="/addsubject" element={<Addsubject />} />
-                    <Route exact path={"updatesubject/:id"} element={<Updatesubject />} />
+                            <Route path="/admindashboard" element={<AdminDashboard />} />
+                            <Route path="/sidebar" element={<Adminsidebar />} />
 
-                    <Route path="/viewcourse" element={<Viewcourse />} />
-                    <Route path="/addcourse" element={<Addcourse />} />
-                    <Route exact path={"updatecourse/:id"} element={<Updatecourse />} />
+                            <Route path="/addtimetable" element={<Addtimetable />} />
+                            <Route path="/viewtimetable" element={<Viewtimetable />} />
 
-                    <Route path="/addquestion" element={<Addquestion />} />
-                    <Route path="/viewquestion" element={<Viewquestion />} />
-                    <Route exact path={"updatequestion/:id"} element={<Updatequestion />} />
+                            <Route path="/addlecture" element={<Addlecture />} />
+                            <Route path="/viewlecture" element={<Viewlecture />} />
+                            <Route exact path={"updatelecture/:id"} element={<Updatelecture />} />
 
-                    <Route path="/assessment" element={<Assessment />} />
-                    <Route path="/assessment-1" element={<Assessment_1 />} />
-                    <Route path="/feedback" element={<Feedback/>}/>
-                    <Route path="/result" element={<Result />} />
-                    <Route path="/teacher-result" element={<Teacherresult />} />
+                            <Route path="/viewfaculty" element={<Viewfaculty />} />
+                            <Route path="/addfaculty" element={<Addfaculty />} />
+                            <Route exact path={"updatefaculty/:id"} element={<Updatefaculty />} />
 
-                    <Route path="/addmaterial" element={<Addmaterial/>} />
-                    <Route path="/viewmaterial" element={<Viewmaterial/>} />
-                    <Route path="/viewmaterialstudent" element={<Viewmaterialstudent/>} />
-                    <Route path="/deletematerial" element={<Deletematerial/>} />
+                            <Route path="/viewstudent" element={<Viewstudent />} />
+                            <Route path="/addstudent" element={<Addstudent />} />
+                            <Route exact path={"updatestudent/:id"} element={<Updatestudent />} />
 
-                    <Route path="/todolist" element={<Todolist/>} />
-                    <Route path="/teachertodolist" element={<Teachertodolist/>} />
-                    <Route path="/admintodolist" element={<Admintodolist/>} />
-                    <Route path="/studenttodolist" element={<Studenttodolist/>} />
+                            <Route path="/viewsubject" element={<Viewsubject />} />
+                            <Route path="/addsubject" element={<Addsubject />} />
+                            <Route exact path={"updatesubject/:id"} element={<Updatesubject />} />
 
+                            <Route path="/viewcourse" element={<Viewcourse />} />
+                            <Route path="/addcourse" element={<Addcourse />} />
+                            <Route exact path={"updatecourse/:id"} element={<Updatecourse />} />
+
+                            <Route path="/admintodolist" element={<Admintodolist />} />
+
+                        </Route>
+
+                        <Route element={<Protectedteacher />}>
+
+                            <Route path="/teacherdashboard" element={<TeacherDashboard />} />
+                            <Route path="/sidebar" element={<Teachersidebar />} />
+
+                            <Route path="/addquestion" element={<Addquestion />} />
+                            <Route path="/viewquestion" element={<Viewquestion />} />
+                            <Route exact path={"updatequestion/:id"} element={<Updatequestion />} />
+
+                            <Route path="/teacher-result" element={<Teacherresult />} />
+
+                            <Route path="/addmaterial" element={<Addmaterial />} />
+                            <Route path="/viewmaterial" element={<Viewmaterial />} />
+                            <Route path="/deletematerial" element={<Deletematerial />} />
+
+                            <Route path="/teachertodolist" element={<Teachertodolist />} />
+
+                        </Route>
+
+                        <Route element={<Protectedstudent />}>
+
+                            <Route path="/studentdashboard" element={<StudentDashboard />} />
+
+                            <Route path="/sidebar" element={<Studentsidebar />} />
+                            <Route path="/student_time" element={<Student_time />} />
+
+                            <Route path="/assessment" element={<Assessment />} />
+                            <Route path="/assessment-1" element={<Assessment_1 />} />
+                            <Route path="/feedback" element={<Feedback />} />
+
+                            <Route path="/result" element={<Result />} />
+
+                            <Route path="/viewmaterialstudent" element={<Viewmaterialstudent />} />
+                            <Route path="/todolist" element={<Todolist />} />
+                            <Route path="/studenttodolist" element={<Studenttodolist />} />
+
+                        </Route>
+                    </Route>
                 </Routes>
-
             </Router>
         </div>
     )
